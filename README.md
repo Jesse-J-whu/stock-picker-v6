@@ -1,1 +1,32 @@
-# V6
+# 长周期鸭口选股 V6
+
+独立的沪深 A 股量化筛选系统。沿用现有系统的数据和发布口径：腾讯前复权
+OHLC、成交量不复权、Tushare 当日收盘校验、全市场覆盖不足时禁止发布。
+
+七组条件必须全部满足：
+
+1. BOLL(20,2)：近24个月出现月线 UB↑/MID↑/LB↓；同时近104周出现
+   UB↑/MID↑/LB↓或三轨均↑。
+2. MACD(12,26,9)：近24个月月线金叉后 DIF 始终不低于 DEA，或者近104周
+   出现零轴上周线金叉并保持。
+3. OBV：最新月线和周线均为 OBV > MAOBV(20)。
+4. DMA：最新周线 DIF_DMA > DIFMA；不使用月线和日线。
+5. 成交量：近48个月至少一期达到前月3倍，且近208周至少一期达到前周2倍。
+6. KDJ(9,3,3)：近24个月内 J上穿K、K上穿D可先后发生，随后形成 J>K>D。
+7. 月MA5：近24个月内至少一期月收盘价高于月MA5。
+
+其中“向上/向下”均为本期指标值与上一期比较；交叉必须由前一期未在上方、
+本期进入上方构成，不能仅靠窗口开始前已有的排列判定。
+
+服务器每天只抓取一次全量历史，V1、V4、V6共享同一份已验证快照并分别计算。
+本仓库的 `update.yml` 只保留人工备用入口；正常自动发布由腾讯云服务器和
+`server-pages.yml` 完成。
+
+```bash
+pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python strategy.py
+python verify_output.py docs
+```
+
+输出为 `docs/index.html` 与 `docs/data.json`。本项目不构成投资建议。

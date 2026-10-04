@@ -1,0 +1,80 @@
+name: 前复权选股与自动网页
+on:
+  # Automatic runs are owned by the verified Tencent server timer.
+  # Keep this full-calculation workflow as a manually dispatched fallback.
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: production-qfq
+  cancel-in-progress: false
+jobs:
+  run-strategy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      PYTHONUNBUFFERED: '1'
+      QFQ_WORKERS: '4'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Same-day cache namespace
+        id: cache-date
+        run: echo "day=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/restore@v4
+        with:
+          path: .cache/qfq-v2/
+          key: qfq-v2-${{ runner.os }}-${{ steps.cache-date.outputs.day }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            qfq-v2-${{ runner.os }}-${{ steps.cache-date.outputs.day }}-
+      - run: pip install -r requirements.txt
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Calculate validated forward-adjusted strategy
+        run: python strategy.py
+        env:
+          TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
+      - name: Verify exact webpage output
+        run: python verify_output.py docs
+      - name: Save successful downloads even when publication is blocked
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/qfq-v2/
+          key: qfq-v2-${{ runner.os }}-${{ steps.cache-date.outputs.day }}-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Upload quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-quality
+          path: data-quality.json
+          if-no-files-found: warn
+      - name: Commit verified results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          if ! git diff --cached --quiet; then
+            git commit -m "Update validated qfq screening results"
+            git pull --rebase origin main
+            git push
+          fi
+      - uses: actions/configure-pages@v4
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/
+  deploy:
+    needs: run-strategy
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the exact verified output
+        id: deployment
+        uses: actions/deploy-pages@v4
