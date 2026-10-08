@@ -34,6 +34,24 @@ class V6StrategyTests(unittest.TestCase):
             self.assertEqual(strategy.calc_boll_week(pd.DataFrame(index=index)).tolist(),
                              [False, True, True])
 
+    def test_week_close_stays_above_mid_after_latest_duck(self):
+        data = frame(110)
+        data['close'] = 11.0
+        ducks = pd.Series(False, index=data.index)
+        ducks.iloc[100] = True
+        mid = pd.Series(10.0, index=data.index)
+        with patch.object(strategy, 'calc_boll', return_value=ducks), \
+                patch.object(strategy, 'ma', return_value=mid):
+            self.assertTrue(strategy.calc_week_close_above_mid_after_latest_duck(data))
+            data.loc[105, 'close'] = 10.0
+            self.assertFalse(strategy.calc_week_close_above_mid_after_latest_duck(data))
+
+    def test_week_hold_requires_actual_recent_duck(self):
+        data = frame(110)
+        ducks = pd.Series(False, index=data.index)
+        with patch.object(strategy, 'calc_boll', return_value=ducks):
+            self.assertFalse(strategy.calc_week_close_above_mid_after_latest_duck(data))
+
     def test_volume_thresholds_are_inclusive_and_both_required(self):
         month, week = frame(60), frame(209)
         month.loc[59, 'vol'] = month.loc[58, 'vol'] * 3
@@ -104,13 +122,13 @@ class V6StrategyTests(unittest.TestCase):
         data.loc[5, 'low'] = 10.02
         self.assertFalse(strategy.calc_gap_up(data, 24))
 
-    def test_all_nine_groups_are_required(self):
+    def test_all_ten_groups_are_required(self):
         conditions = {'BOLL': True, 'MACD': True, 'OBV': True, 'DMA': True,
                       'AMO': True, 'KDJ': True, 'MA5': True, 'CAP': True,
-                      'GAP': True, '_parts': {}}
+                      'GAP': True, 'BOLL_HOLD': True, '_parts': {}}
         with patch.object(strategy, 'evaluate_conditions', return_value=conditions):
             self.assertTrue(strategy.apply_strategy(frame(60), frame(209), 200_000))
-        conditions['GAP'] = False
+        conditions['BOLL_HOLD'] = False
         with patch.object(strategy, 'evaluate_conditions', return_value=conditions):
             self.assertFalse(strategy.apply_strategy(frame(60), frame(209), 200_000))
 

@@ -1,7 +1,7 @@
 """
 长周期鸭口选股策略 V6
 ======================
-所有价格指标使用前复权行情，成交量不复权。九组条件全部满足：
+所有价格指标使用前复权行情，成交量不复权。十组条件全部满足：
 月/周 BOLL 历史形态、月或周 MACD 金叉保持、月周 OBV、周 DMA、
 四年月/周放量、两年月 KDJ 顺序金叉，以及两年月收盘价曾高于 MA5。
 """
@@ -297,6 +297,19 @@ def calc_boll_week(df, period=20):
     return duck | all_up
 
 
+def calc_week_close_above_mid_after_latest_duck(df, lookback=104, period=20):
+    """最近两年内最近一次周鸭口起，周收盘价始终严格高于BOLL中轨。"""
+    duck = calc_boll(df, period)
+    start = max(0, len(df) - lookback)
+    positions = np.flatnonzero(duck.to_numpy())
+    positions = positions[positions >= start]
+    if len(positions) == 0:
+        return False
+    latest = int(positions[-1])
+    mid = ma(df['close'], period)
+    return bool((df['close'].iloc[latest:] > mid.iloc[latest:]).all())
+
+
 def calc_macd(df, with_zero_filter=False):
     """
     返回：macd_cross_hold（Series[bool]）
@@ -420,17 +433,17 @@ def calc_gap_up(df, lookback):
 
 
 def calc_circulating_market_cap(circ_mv_wan):
-    """Tushare circ_mv 的单位是万元；20亿至200亿元均含边界。"""
+    """流通市值统一换算为万元；20亿至200亿元均含边界。"""
     value = float(circ_mv_wan)
     return 200_000.0 <= value <= 2_000_000.0
 
 
 # ============================================================
-# 主策略：九组长周期月/周线条件
+# 主策略：十组长周期月/周线条件
 # ============================================================
 
 def evaluate_conditions(df_month, df_week, circ_mv_wan):
-    """返回九组经用户确认的条件；策略只在所有条件为真时命中。"""
+    """返回十组经用户确认的条件；策略只在所有条件为真时命中。"""
     boll_m = bool(exist(calc_boll(df_month), 24).iloc[-1])
     boll_w = bool(exist(calc_boll_week(df_week), 104).iloc[-1])
     macd_m = macd_recent_cross_hold(df_month, 24, with_zero_filter=False)
@@ -444,6 +457,7 @@ def evaluate_conditions(df_month, df_week, circ_mv_wan):
     cap = calc_circulating_market_cap(circ_mv_wan)
     gap_m = calc_gap_up(df_month, 24)
     gap_w = calc_gap_up(df_week, 104)
+    boll_hold_w = calc_week_close_above_mid_after_latest_duck(df_week, 104)
     return {
         'BOLL': boll_m and boll_w,
         'MACD': macd_m or macd_w,
@@ -454,6 +468,7 @@ def evaluate_conditions(df_month, df_week, circ_mv_wan):
         'MA5': ma5_m,
         'CAP': cap,
         'GAP': gap_m or gap_w,
+        'BOLL_HOLD': boll_hold_w,
         '_parts': {
             'boll_month': boll_m, 'boll_week': boll_w,
             'macd_month': macd_m, 'macd_week': macd_w,
@@ -466,7 +481,8 @@ def evaluate_conditions(df_month, df_week, circ_mv_wan):
 def apply_strategy(df_month, df_week, circ_mv_wan, df_day=None):
     conditions = evaluate_conditions(df_month, df_week, circ_mv_wan)
     return all(conditions[key] for key in
-               ('BOLL', 'MACD', 'OBV', 'DMA', 'AMO', 'KDJ', 'MA5', 'CAP', 'GAP'))
+               ('BOLL', 'MACD', 'OBV', 'DMA', 'AMO', 'KDJ', 'MA5', 'CAP', 'GAP',
+                'BOLL_HOLD'))
 
 
 def apply_strategy_detail(df_month, df_week, circ_mv_wan, df_day=None):
@@ -483,6 +499,7 @@ def apply_strategy_detail(df_month, df_week, circ_mv_wan, df_day=None):
         'MA5': f"月{mark(conditions['MA5'])}",
         'CAP': f"{float(circ_mv_wan) / 10_000:.2f}亿 {mark(conditions['CAP'])}",
         'GAP': f"月{mark(parts['gap_month'])} 或 周{mark(parts['gap_week'])}",
+        'BOLL_HOLD': f"周{mark(conditions['BOLL_HOLD'])}",
     }
 
 
@@ -766,7 +783,7 @@ body {
         <span class="count">{{ stock_count }} 只</span>
     </div>
     <div class="tags">
-        <span class="tag tag-v4">★ 九组条件</span>
+        <span class="tag tag-v4">★ 十组条件</span>
         <span class="tag tag-boll">BOLL 月24/周104</span>
         <span class="tag tag-macd">MACD 月或周</span>
         <span class="tag tag-obv">OBV 月/周</span>
@@ -776,15 +793,17 @@ body {
         <span class="tag tag-v4">月收盘价 &gt; MA5</span>
         <span class="tag tag-cap">流通市值 20～200亿</span>
         <span class="tag tag-gap">两年月/周向上跳空</span>
+        <span class="tag tag-boll">周鸭口后收盘始终高于中轨</span>
     </div>
 </div>
 
 <div class="strategy-desc">
     <strong>策略逻辑（V6）：</strong>
-    九组条件全部通过：近两年月线鸭口 + 周线鸭口或三轨向上；月线或零轴上周线 MACD
+    十组条件全部通过：近两年月线鸭口 + 周线鸭口或三轨向上；月线或零轴上周线 MACD
     金叉后保持；月周 OBV 均线上方；周 DMA；四年内月量≥3倍且周量≥2倍；
     两年内月 KDJ 先后上穿并形成 J&gt;K&gt;D；两年内月收盘价曾高于 MA5；
-    流通市值20～200亿元；两年内月线或周线至少一次向上跳空≥0.02元。
+    流通市值20～200亿元；两年内月线或周线至少一次向上跳空≥0.02元；
+    最近一次周线鸭口出现后至今，每周收盘价始终严格高于周BOLL中轨。
 </div>
 
 <div class="disclaimer" id="data-status">
@@ -851,6 +870,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-v4">MA5 {{ s.detail.MA5 }}</span>
         <span class="sig sig-cap">流通市值 {{ s.detail.CAP }}</span>
         <span class="sig sig-gap">跳空 {{ s.detail.GAP }}</span>
+        <span class="sig sig-boll">鸭口后周收盘&gt;中轨 {{ s.detail.BOLL_HOLD }}</span>
     </div>
     {% endif %}
 </div>
@@ -864,7 +884,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
 </div>
 
 <div class="footer">
-    <p>长周期鸭口选股 V6 · 九组筛选条件 · 数据来源：腾讯财经 / Tushare</p>
+    <p>长周期鸭口选股 V6 · 十组筛选条件 · 数据来源：腾讯财经 / Tushare</p>
     <p style="margin-top:4px;">每个交易日收盘后自动更新</p>
 </div>
 </body>
@@ -901,6 +921,7 @@ def save_data_json(selected_stocks, output_path):
             'MA5': '月24期内至少一期收盘价>月MA5',
             'CAP': '交易日流通市值20亿～200亿元（含边界）',
             'GAP': '近24个月或104周内至少一次本期最低价≥前一期最高价+0.02元',
+            'BOLL_HOLD': '近104周最近一次周线鸭口出现后，每周收盘价始终严格高于周BOLL中轨',
         },
         'adjustment': 'qfq',
         'data_source': SOURCE,
