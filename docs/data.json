@@ -1,21 +1,23 @@
 {
-  "update_time": "2026-10-08 16:13:43",
+  "update_time": "2026-10-08 16:28:13",
   "timezone": "Asia/Shanghai",
   "trade_date": "2026-10-08",
   "data_quality": {
     "price_adjustment": "qfq",
     "volume_basis": "unadjusted shares/hand",
     "scope": "当日有成交的沪深A股，排除ST/PT/退市标记；不含北交所及当日停牌",
-    "source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
+    "source": "腾讯前复权及流通市值（全量抓取）；Tushare当日日线校验",
     "fetch_errors": [],
     "short_history": 0,
     "trade_date": "2026-10-08",
     "reference_rows": 5557,
     "sh_sz_trading_rows": 5209,
+    "market_cap_rows": 5209,
+    "market_cap_source": "Tencent quote field 44 (circulating market cap, 亿元)",
     "excluded_risk_names": 195,
     "universe": 5014,
     "valid_histories": 5014,
-    "elapsed_seconds": 556,
+    "elapsed_seconds": 40,
     "coverage": 1.0,
     "transport": "tencent-native-json-full-window-v1",
     "full_refetch_each_trade_date": true,
@@ -35,32 +37,14 @@
     "DMA": "最新周线 DIF_DMA>DIFMA",
     "AMO": "成交量（非成交额）：月48期内≥前月3倍且周208期内≥前周2倍",
     "KDJ": "月24期内J/K与K/D允许先后上穿，最终形成J>K>D",
-    "MA5": "月24期内至少一期收盘价>月MA5"
+    "MA5": "月24期内至少一期收盘价>月MA5",
+    "CAP": "交易日流通市值20亿～200亿元（含边界）",
+    "GAP": "近24个月或104周内至少一次本期最低价≥前一期最高价+0.02元"
   },
   "adjustment": "qfq",
-  "data_source": "腾讯前复权（全量加速抓取）；Tushare当日日线校验",
-  "count": 225,
+  "data_source": "腾讯前复权及流通市值（全量抓取）；Tushare当日日线校验",
+  "count": 100,
   "stocks": [
-    {
-      "code": "000011",
-      "name": "深物业A",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.12,
-      "change_pct": -0.98,
-      "volume": 1164724.64,
-      "turnover": 1513302.21386,
-      "open": 12.19,
-      "high": 13.46,
-      "low": 12.12
-    },
     {
       "code": "000069",
       "name": "华侨城Ａ",
@@ -71,8 +55,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "132.45亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 132.45,
       "price": 1.92,
       "change_pct": -2.54,
       "volume": 1281994.52,
@@ -91,8 +78,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "37.68亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 37.68,
       "price": 11.45,
       "change_pct": -7.81,
       "volume": 810002.03,
@@ -111,8 +101,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "85.51亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 85.51,
       "price": 3.65,
       "change_pct": -1.35,
       "volume": 6144080.82,
@@ -120,66 +113,6 @@
       "open": 3.51,
       "high": 3.89,
       "low": 3.51
-    },
-    {
-      "code": "000690",
-      "name": "宝新能源",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 5.5,
-      "change_pct": 5.57,
-      "volume": 1221558.08,
-      "turnover": 661722.45916,
-      "open": 5.22,
-      "high": 5.55,
-      "low": 5.2
-    },
-    {
-      "code": "000692",
-      "name": "惠天热电",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 4.61,
-      "change_pct": 0.44,
-      "volume": 698933.95,
-      "turnover": 321056.94816,
-      "open": 4.55,
-      "high": 4.76,
-      "low": 4.42
-    },
-    {
-      "code": "000731",
-      "name": "四川美丰",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 8.1,
-      "change_pct": 1.63,
-      "volume": 110792.21,
-      "turnover": 90151.89375,
-      "open": 7.98,
-      "high": 8.23,
-      "low": 7.98
     },
     {
       "code": "000782",
@@ -191,8 +124,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "42.67亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 42.67,
       "price": 8.08,
       "change_pct": -0.25,
       "volume": 121648.0,
@@ -211,8 +147,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "35.67亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 35.67,
       "price": 9.75,
       "change_pct": -0.41,
       "volume": 98932.0,
@@ -220,26 +159,6 @@
       "open": 9.79,
       "high": 9.95,
       "low": 9.66
-    },
-    {
-      "code": "000820",
-      "name": "神雾节能",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 3.51,
-      "change_pct": -2.23,
-      "volume": 169545.61,
-      "turnover": 61088.04775,
-      "open": 3.67,
-      "high": 3.73,
-      "low": 3.48
     },
     {
       "code": "000823",
@@ -251,8 +170,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "135.11亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 135.11,
       "price": 22.71,
       "change_pct": -2.45,
       "volume": 751975.35,
@@ -271,8 +193,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "31.01亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 31.01,
       "price": 4.02,
       "change_pct": 2.03,
       "volume": 213127.0,
@@ -291,8 +216,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "81.24亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 81.24,
       "price": 17.74,
       "change_pct": 3.8,
       "volume": 648086.9,
@@ -300,26 +228,6 @@
       "open": 17.43,
       "high": 17.88,
       "low": 16.92
-    },
-    {
-      "code": "001211",
-      "name": "双枪科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 27.08,
-      "change_pct": -8.27,
-      "volume": 120854.92,
-      "turnover": 342513.05669,
-      "open": 29.02,
-      "high": 30.29,
-      "low": 26.57
     },
     {
       "code": "001216",
@@ -331,8 +239,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "58.15亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 58.15,
       "price": 23.56,
       "change_pct": -10.01,
       "volume": 177086.37,
@@ -340,26 +251,6 @@
       "open": 25.01,
       "high": 25.4,
       "low": 23.56
-    },
-    {
-      "code": "001872",
-      "name": "招商港口",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 24.61,
-      "change_pct": 1.78,
-      "volume": 34112.8,
-      "turnover": 83795.11055,
-      "open": 24.15,
-      "high": 24.88,
-      "low": 23.95
     },
     {
       "code": "002030",
@@ -371,8 +262,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "83.65亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 83.65,
       "price": 5.96,
       "change_pct": 3.65,
       "volume": 937848.08,
@@ -380,66 +274,6 @@
       "open": 6.33,
       "high": 6.33,
       "low": 5.8
-    },
-    {
-      "code": "002099",
-      "name": "海翔药业",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 6.15,
-      "change_pct": 0.0,
-      "volume": 385745.86,
-      "turnover": 240416.19462,
-      "open": 6.21,
-      "high": 6.36,
-      "low": 6.1
-    },
-    {
-      "code": "002172",
-      "name": "澳洋健康",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 5.66,
-      "change_pct": 4.24,
-      "volume": 1847116.04,
-      "turnover": 1034874.11459,
-      "open": 5.59,
-      "high": 5.76,
-      "low": 5.41
-    },
-    {
-      "code": "002174",
-      "name": "游族网络",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.62,
-      "change_pct": -4.32,
-      "volume": 329567.18,
-      "turnover": 422663.03372,
-      "open": 13.2,
-      "high": 13.3,
-      "low": 12.55
     },
     {
       "code": "002246",
@@ -451,8 +285,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "134.57亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 134.57,
       "price": 24.51,
       "change_pct": -3.54,
       "volume": 206317.24,
@@ -460,26 +297,6 @@
       "open": 25.5,
       "high": 25.51,
       "low": 24.31
-    },
-    {
-      "code": "002285",
-      "name": "世联行",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 3.21,
-      "change_pct": 6.29,
-      "volume": 3542411.69,
-      "turnover": 1140776.44093,
-      "open": 2.87,
-      "high": 3.32,
-      "low": 2.85
     },
     {
       "code": "002291",
@@ -491,8 +308,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "47.19亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 47.19,
       "price": 5.43,
       "change_pct": -0.91,
       "volume": 202906.67,
@@ -511,8 +331,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "61.75亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 61.75,
       "price": 8.6,
       "change_pct": 0.47,
       "volume": 208363.5,
@@ -520,66 +343,6 @@
       "open": 8.65,
       "high": 8.98,
       "low": 8.56
-    },
-    {
-      "code": "002349",
-      "name": "精华制药",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 8.72,
-      "change_pct": 1.99,
-      "volume": 930459.21,
-      "turnover": 820208.40758,
-      "open": 8.59,
-      "high": 9.3,
-      "low": 8.54
-    },
-    {
-      "code": "002374",
-      "name": "中锐股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 3.42,
-      "change_pct": 1.79,
-      "volume": 470489.0,
-      "turnover": 162638.2203,
-      "open": 3.47,
-      "high": 3.57,
-      "low": 3.38
-    },
-    {
-      "code": "002396",
-      "name": "星网锐捷",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 31.74,
-      "change_pct": -2.64,
-      "volume": 361712.66,
-      "turnover": 1161270.85514,
-      "open": 32.53,
-      "high": 33.16,
-      "low": 31.48
     },
     {
       "code": "002412",
@@ -591,8 +354,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "44.71亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 44.71,
       "price": 8.98,
       "change_pct": -0.99,
       "volume": 338163.16,
@@ -611,8 +377,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "74.22亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 74.22,
       "price": 3.53,
       "change_pct": -3.29,
       "volume": 2601574.21,
@@ -631,8 +400,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "123.69亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 123.69,
       "price": 13.07,
       "change_pct": -1.43,
       "volume": 355400.91,
@@ -640,26 +412,6 @@
       "open": 13.56,
       "high": 13.66,
       "low": 12.91
-    },
-    {
-      "code": "002443",
-      "name": "金洲管道",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.45,
-      "change_pct": -1.74,
-      "volume": 235269.65,
-      "turnover": 296241.1364,
-      "open": 12.58,
-      "high": 12.97,
-      "low": 12.27
     },
     {
       "code": "002479",
@@ -671,8 +423,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "51.87亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 51.87,
       "price": 6.01,
       "change_pct": 3.98,
       "volume": 188792.5,
@@ -680,26 +435,6 @@
       "open": 5.81,
       "high": 6.04,
       "low": 5.78
-    },
-    {
-      "code": "002531",
-      "name": "天顺风能",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 8.35,
-      "change_pct": 4.64,
-      "volume": 1797442.15,
-      "turnover": 1462713.45507,
-      "open": 7.9,
-      "high": 8.4,
-      "low": 7.8
     },
     {
       "code": "002577",
@@ -711,8 +446,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "58.10亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 58.1,
       "price": 20.7,
       "change_pct": 0.1,
       "volume": 50957.0,
@@ -731,8 +469,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "44.11亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 44.11,
       "price": 3.23,
       "change_pct": -1.22,
       "volume": 743044.11,
@@ -751,8 +492,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "36.80亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 36.8,
       "price": 8.34,
       "change_pct": 7.47,
       "volume": 965499.23,
@@ -760,106 +504,6 @@
       "open": 7.61,
       "high": 8.45,
       "low": 7.32
-    },
-    {
-      "code": "002631",
-      "name": "德尔未来",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.53,
-      "change_pct": -7.05,
-      "volume": 439168.72,
-      "turnover": 563450.6366,
-      "open": 13.67,
-      "high": 13.87,
-      "low": 12.3
-    },
-    {
-      "code": "002638",
-      "name": "勤上股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 4.72,
-      "change_pct": -1.05,
-      "volume": 384388.6,
-      "turnover": 183659.7228,
-      "open": 4.86,
-      "high": 4.96,
-      "low": 4.67
-    },
-    {
-      "code": "002648",
-      "name": "卫星化学",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 27.36,
-      "change_pct": 3.21,
-      "volume": 390521.25,
-      "turnover": 1071108.81555,
-      "open": 27.0,
-      "high": 27.76,
-      "low": 26.7
-    },
-    {
-      "code": "002687",
-      "name": "乔治白",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 6.14,
-      "change_pct": 10.04,
-      "volume": 211529.65,
-      "turnover": 128882.31637,
-      "open": 5.93,
-      "high": 6.14,
-      "low": 5.93
-    },
-    {
-      "code": "002748",
-      "name": "世龙实业",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.45,
-      "change_pct": 2.98,
-      "volume": 69800.0,
-      "turnover": 86754.437,
-      "open": 12.22,
-      "high": 12.65,
-      "low": 12.01
     },
     {
       "code": "002762",
@@ -871,8 +515,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "31.93亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 31.93,
       "price": 9.02,
       "change_pct": -2.59,
       "volume": 80369.0,
@@ -891,8 +538,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "47.36亿 ✓",
+        "GAP": "月✓ 或 周✗"
       },
+      "circulating_market_cap_yi": 47.36,
       "price": 16.73,
       "change_pct": -1.41,
       "volume": 131758.99,
@@ -900,26 +550,6 @@
       "open": 16.91,
       "high": 17.14,
       "low": 16.62
-    },
-    {
-      "code": "002815",
-      "name": "崇达技术",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 22.51,
-      "change_pct": -2.17,
-      "volume": 604441.56,
-      "turnover": 1399341.43857,
-      "open": 23.41,
-      "high": 24.2,
-      "low": 22.37
     },
     {
       "code": "002827",
@@ -931,8 +561,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "154.15亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 154.15,
       "price": 55.85,
       "change_pct": -5.34,
       "volume": 172890.2,
@@ -940,26 +573,6 @@
       "open": 58.72,
       "high": 59.44,
       "low": 54.79
-    },
-    {
-      "code": "002833",
-      "name": "弘亚数控",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 19.45,
-      "change_pct": 0.62,
-      "volume": 79996.58,
-      "turnover": 156636.64647,
-      "open": 19.26,
-      "high": 19.98,
-      "low": 19.17
     },
     {
       "code": "002848",
@@ -971,8 +584,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "24.27亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 24.27,
       "price": 14.67,
       "change_pct": 1.73,
       "volume": 101661.0,
@@ -980,46 +596,6 @@
       "open": 14.71,
       "high": 15.25,
       "low": 14.47
-    },
-    {
-      "code": "002849",
-      "name": "威星智能",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 20.43,
-      "change_pct": -4.4,
-      "volume": 240253.36,
-      "turnover": 504148.5334,
-      "open": 21.4,
-      "high": 21.88,
-      "low": 20.22
-    },
-    {
-      "code": "002870",
-      "name": "香山股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 42.54,
-      "change_pct": -6.53,
-      "volume": 36303.0,
-      "turnover": 157159.326,
-      "open": 45.6,
-      "high": 45.6,
-      "low": 42.0
     },
     {
       "code": "002900",
@@ -1031,8 +607,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "25.32亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 25.32,
       "price": 12.79,
       "change_pct": -1.39,
       "volume": 164149.0,
@@ -1051,8 +630,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "45.41亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 45.41,
       "price": 24.35,
       "change_pct": -5.03,
       "volume": 141609.98,
@@ -1060,86 +642,6 @@
       "open": 25.86,
       "high": 25.99,
       "low": 24.08
-    },
-    {
-      "code": "002909",
-      "name": "集泰股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 6.68,
-      "change_pct": -0.45,
-      "volume": 556477.4,
-      "turnover": 380106.88154,
-      "open": 6.75,
-      "high": 7.08,
-      "low": 6.67
-    },
-    {
-      "code": "002913",
-      "name": "奥士康",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 90.77,
-      "change_pct": -1.66,
-      "volume": 131336.29,
-      "turnover": 1224430.48854,
-      "open": 93.27,
-      "high": 97.88,
-      "low": 89.5
-    },
-    {
-      "code": "002948",
-      "name": "青岛银行",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 6.27,
-      "change_pct": 1.95,
-      "volume": 465309.0,
-      "turnover": 289725.98186,
-      "open": 6.14,
-      "high": 6.28,
-      "low": 6.12
-    },
-    {
-      "code": "002963",
-      "name": "豪尔赛",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 20.11,
-      "change_pct": -6.86,
-      "volume": 75902.0,
-      "turnover": 154783.982,
-      "open": 21.29,
-      "high": 21.35,
-      "low": 19.66
     },
     {
       "code": "003013",
@@ -1151,8 +653,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "71.55亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 71.55,
       "price": 17.35,
       "change_pct": 6.38,
       "volume": 199523.4,
@@ -1160,66 +665,6 @@
       "open": 16.39,
       "high": 17.79,
       "low": 16.37
-    },
-    {
-      "code": "003030",
-      "name": "祖名股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 25.47,
-      "change_pct": -1.24,
-      "volume": 53122.0,
-      "turnover": 133170.614,
-      "open": 25.9,
-      "high": 25.98,
-      "low": 24.3
-    },
-    {
-      "code": "300142",
-      "name": "沃森生物",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 14.08,
-      "change_pct": -1.05,
-      "volume": 1271553.46,
-      "turnover": 1819092.1229,
-      "open": 14.97,
-      "high": 15.0,
-      "low": 13.96
-    },
-    {
-      "code": "300154",
-      "name": "瑞凌股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 13.56,
-      "change_pct": -0.88,
-      "volume": 95196.0,
-      "turnover": 129471.32,
-      "open": 13.67,
-      "high": 14.07,
-      "low": 13.25
     },
     {
       "code": "300192",
@@ -1231,8 +676,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "110.35亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 110.35,
       "price": 24.23,
       "change_pct": 3.46,
       "volume": 410689.6,
@@ -1251,8 +699,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "58.41亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 58.41,
       "price": 1.97,
       "change_pct": 0.0,
       "volume": 511342.93,
@@ -1260,46 +711,6 @@
       "open": 1.96,
       "high": 1.99,
       "low": 1.95
-    },
-    {
-      "code": "300199",
-      "name": "翰宇药业",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 23.75,
-      "change_pct": -0.71,
-      "volume": 539986.12,
-      "turnover": 1280273.53192,
-      "open": 24.16,
-      "high": 24.29,
-      "low": 23.36
-    },
-    {
-      "code": "300243",
-      "name": "瑞丰高材",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 20.34,
-      "change_pct": -0.2,
-      "volume": 294961.39,
-      "turnover": 626343.99171,
-      "open": 20.78,
-      "high": 22.49,
-      "low": 20.24
     },
     {
       "code": "300244",
@@ -1311,8 +722,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "98.94亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 98.94,
       "price": 19.73,
       "change_pct": -3.85,
       "volume": 279037.03,
@@ -1331,8 +745,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "31.81亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 31.81,
       "price": 5.92,
       "change_pct": -3.74,
       "volume": 484902.0,
@@ -1351,8 +768,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "24.10亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 24.1,
       "price": 12.21,
       "change_pct": 1.24,
       "volume": 172321.0,
@@ -1371,8 +791,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "40.79亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 40.79,
       "price": 5.02,
       "change_pct": 4.58,
       "volume": 369588.64,
@@ -1391,8 +814,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "70.22亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 70.22,
       "price": 8.69,
       "change_pct": -6.16,
       "volume": 630291.54,
@@ -1411,8 +837,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "39.74亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 39.74,
       "price": 13.92,
       "change_pct": -5.5,
       "volume": 467728.35,
@@ -1420,86 +849,6 @@
       "open": 15.29,
       "high": 15.3,
       "low": 13.85
-    },
-    {
-      "code": "300434",
-      "name": "金石亚药",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.41,
-      "change_pct": -3.95,
-      "volume": 298055.94,
-      "turnover": 373412.87748,
-      "open": 12.92,
-      "high": 12.99,
-      "low": 12.31
-    },
-    {
-      "code": "300454",
-      "name": "深信服",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 127.9,
-      "change_pct": -6.93,
-      "volume": 138185.86,
-      "turnover": 1819564.44656,
-      "open": 139.26,
-      "high": 139.35,
-      "low": 127.0
-    },
-    {
-      "code": "300483",
-      "name": "首华燃气",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 24.5,
-      "change_pct": 7.03,
-      "volume": 187177.0,
-      "turnover": 455373.38576,
-      "open": 23.48,
-      "high": 24.91,
-      "low": 23.13
-    },
-    {
-      "code": "300489",
-      "name": "光智科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 263.0,
-      "change_pct": -5.51,
-      "volume": 161544.97,
-      "turnover": 4288097.82698,
-      "open": 283.0,
-      "high": 288.8,
-      "low": 251.0
     },
     {
       "code": "300491",
@@ -1511,8 +860,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "50.70亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 50.7,
       "price": 32.17,
       "change_pct": -8.5,
       "volume": 115502.1,
@@ -1520,66 +872,6 @@
       "open": 35.31,
       "high": 35.31,
       "low": 31.66
-    },
-    {
-      "code": "300534",
-      "name": "陇神戎发",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.22,
-      "change_pct": -2.86,
-      "volume": 309852.0,
-      "turnover": 386416.087,
-      "open": 12.89,
-      "high": 12.95,
-      "low": 12.1
-    },
-    {
-      "code": "300570",
-      "name": "太辰光",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 199.0,
-      "change_pct": -6.29,
-      "volume": 145068.23,
-      "turnover": 2931120.84813,
-      "open": 212.28,
-      "high": 213.5,
-      "low": 196.2
-    },
-    {
-      "code": "300599",
-      "name": "雄塑科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 15.58,
-      "change_pct": 9.72,
-      "volume": 323483.0,
-      "turnover": 499214.232,
-      "open": 14.48,
-      "high": 15.98,
-      "low": 14.34
     },
     {
       "code": "300642",
@@ -1591,8 +883,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "27.07亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 27.07,
       "price": 19.66,
       "change_pct": -5.66,
       "volume": 234149.66,
@@ -1600,86 +895,6 @@
       "open": 20.8,
       "high": 20.84,
       "low": 19.56
-    },
-    {
-      "code": "300647",
-      "name": "超频三",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 9.6,
-      "change_pct": -4.38,
-      "volume": 709358.97,
-      "turnover": 691930.44592,
-      "open": 10.0,
-      "high": 10.15,
-      "low": 9.46
-    },
-    {
-      "code": "300649",
-      "name": "杭州园林",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 27.5,
-      "change_pct": -0.79,
-      "volume": 41765.82,
-      "turnover": 114355.65961,
-      "open": 27.4,
-      "high": 28.01,
-      "low": 26.72
-    },
-    {
-      "code": "300670",
-      "name": "大烨智能",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 7.18,
-      "change_pct": -0.83,
-      "volume": 95929.5,
-      "turnover": 69775.106,
-      "open": 7.26,
-      "high": 7.45,
-      "low": 7.13
-    },
-    {
-      "code": "300676",
-      "name": "华大基因",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 43.76,
-      "change_pct": -4.58,
-      "volume": 156274.74,
-      "turnover": 688625.26342,
-      "open": 46.73,
-      "high": 47.28,
-      "low": 43.33
     },
     {
       "code": "300684",
@@ -1691,8 +906,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "184.32亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 184.32,
       "price": 90.1,
       "change_pct": -16.65,
       "volume": 349379.32,
@@ -1711,8 +929,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "81.19亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 81.19,
       "price": 20.84,
       "change_pct": -2.34,
       "volume": 129704.94,
@@ -1731,8 +952,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "89.81亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 89.81,
       "price": 26.74,
       "change_pct": -5.78,
       "volume": 150397.02,
@@ -1751,8 +975,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "48.40亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 48.4,
       "price": 32.62,
       "change_pct": -1.84,
       "volume": 64887.0,
@@ -1771,8 +998,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "62.95亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 62.95,
       "price": 61.87,
       "change_pct": 2.4,
       "volume": 48548.72,
@@ -1791,8 +1021,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "46.71亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 46.71,
       "price": 8.89,
       "change_pct": -0.89,
       "volume": 134805.0,
@@ -1811,8 +1044,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "43.57亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 43.57,
       "price": 34.89,
       "change_pct": 4.46,
       "volume": 80368.8,
@@ -1820,66 +1056,6 @@
       "open": 33.4,
       "high": 36.2,
       "low": 33.4
-    },
-    {
-      "code": "300741",
-      "name": "华宝股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 23.6,
-      "change_pct": -4.57,
-      "volume": 183430.32,
-      "turnover": 437938.12952,
-      "open": 24.31,
-      "high": 24.53,
-      "low": 23.2
-    },
-    {
-      "code": "300746",
-      "name": "汉嘉数智",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 15.18,
-      "change_pct": 2.08,
-      "volume": 116599.5,
-      "turnover": 176322.695,
-      "open": 14.86,
-      "high": 15.43,
-      "low": 14.75
-    },
-    {
-      "code": "300802",
-      "name": "矩子科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 22.6,
-      "change_pct": -6.22,
-      "volume": 75378.0,
-      "turnover": 174806.66502,
-      "open": 24.22,
-      "high": 24.49,
-      "low": 22.28
     },
     {
       "code": "300820",
@@ -1891,8 +1067,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "68.84亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 68.84,
       "price": 61.58,
       "change_pct": -5.22,
       "volume": 45715.55,
@@ -1900,286 +1079,6 @@
       "open": 64.89,
       "high": 65.77,
       "low": 60.78
-    },
-    {
-      "code": "300829",
-      "name": "金丹科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 21.26,
-      "change_pct": -3.19,
-      "volume": 220854.92,
-      "turnover": 476967.12748,
-      "open": 22.4,
-      "high": 22.64,
-      "low": 20.95
-    },
-    {
-      "code": "300852",
-      "name": "四会富仕",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 69.18,
-      "change_pct": -2.15,
-      "volume": 96706.37,
-      "turnover": 686222.26822,
-      "open": 70.63,
-      "high": 73.66,
-      "low": 68.88
-    },
-    {
-      "code": "300853",
-      "name": "申昊科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 30.68,
-      "change_pct": -1.32,
-      "volume": 67762.62,
-      "turnover": 208473.82996,
-      "open": 31.4,
-      "high": 31.6,
-      "low": 30.03
-    },
-    {
-      "code": "300860",
-      "name": "锋尚文化",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 27.69,
-      "change_pct": -3.65,
-      "volume": 29044.56,
-      "turnover": 82151.64,
-      "open": 28.75,
-      "high": 29.4,
-      "low": 27.36
-    },
-    {
-      "code": "300864",
-      "name": "南大环境",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 25.02,
-      "change_pct": 1.5,
-      "volume": 26366.39,
-      "turnover": 66009.15696,
-      "open": 24.65,
-      "high": 25.58,
-      "low": 24.5
-    },
-    {
-      "code": "300903",
-      "name": "科翔股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 95.6,
-      "change_pct": 3.59,
-      "volume": 272879.17,
-      "turnover": 2665194.96484,
-      "open": 95.01,
-      "high": 103.2,
-      "low": 93.88
-    },
-    {
-      "code": "300907",
-      "name": "康平科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 53.48,
-      "change_pct": 2.3,
-      "volume": 47144.65,
-      "turnover": 260426.62074,
-      "open": 52.29,
-      "high": 57.33,
-      "low": 52.29
-    },
-    {
-      "code": "300909",
-      "name": "汇创达",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 58.88,
-      "change_pct": -3.43,
-      "volume": 153541.89,
-      "turnover": 914967.34669,
-      "open": 61.77,
-      "high": 65.0,
-      "low": 55.45
-    },
-    {
-      "code": "300929",
-      "name": "华骐环保",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 16.2,
-      "change_pct": 1.12,
-      "volume": 19980.0,
-      "turnover": 32381.276,
-      "open": 16.14,
-      "high": 16.55,
-      "low": 15.95
-    },
-    {
-      "code": "300931",
-      "name": "通用电梯",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 18.48,
-      "change_pct": 3.7,
-      "volume": 165686.0,
-      "turnover": 305880.039,
-      "open": 17.82,
-      "high": 18.97,
-      "low": 17.82
-    },
-    {
-      "code": "300939",
-      "name": "秋田微",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 98.34,
-      "change_pct": -1.1,
-      "volume": 42471.29,
-      "turnover": 421908.49687,
-      "open": 98.42,
-      "high": 103.45,
-      "low": 96.12
-    },
-    {
-      "code": "300951",
-      "name": "博硕科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 79.11,
-      "change_pct": -3.39,
-      "volume": 46824.16,
-      "turnover": 376515.97168,
-      "open": 81.07,
-      "high": 82.37,
-      "low": 78.16
-    },
-    {
-      "code": "300958",
-      "name": "建工修复",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.42,
-      "change_pct": 0.0,
-      "volume": 24512.0,
-      "turnover": 30578.136,
-      "open": 12.43,
-      "high": 12.73,
-      "low": 12.26
-    },
-    {
-      "code": "300990",
-      "name": "同飞股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 94.47,
-      "change_pct": -2.63,
-      "volume": 47530.23,
-      "turnover": 454573.25621,
-      "open": 96.82,
-      "high": 98.79,
-      "low": 93.59
     },
     {
       "code": "301008",
@@ -2191,8 +1090,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "56.55亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 56.55,
       "price": 48.9,
       "change_pct": -5.29,
       "volume": 82443.04,
@@ -2200,46 +1102,6 @@
       "open": 51.12,
       "high": 51.88,
       "low": 48.36
-    },
-    {
-      "code": "301015",
-      "name": "百洋医药",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 25.94,
-      "change_pct": 1.01,
-      "volume": 102924.19,
-      "turnover": 265711.05587,
-      "open": 25.9,
-      "high": 26.34,
-      "low": 25.18
-    },
-    {
-      "code": "301017",
-      "name": "漱玉平民",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 14.37,
-      "change_pct": -3.17,
-      "volume": 144349.37,
-      "turnover": 209925.36358,
-      "open": 14.85,
-      "high": 15.06,
-      "low": 14.25
     },
     {
       "code": "301041",
@@ -2251,8 +1113,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "28.92亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 28.92,
       "price": 36.6,
       "change_pct": -1.61,
       "volume": 82395.6,
@@ -2260,46 +1125,6 @@
       "open": 36.83,
       "high": 38.88,
       "low": 36.27
-    },
-    {
-      "code": "301085",
-      "name": "亚康股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 71.06,
-      "change_pct": -5.54,
-      "volume": 51459.15,
-      "turnover": 374050.2519,
-      "open": 74.8,
-      "high": 75.9,
-      "low": 70.33
-    },
-    {
-      "code": "600025",
-      "name": "华能水电",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 10.1,
-      "change_pct": 2.12,
-      "volume": 402455.43,
-      "turnover": 405527.514,
-      "open": 9.89,
-      "high": 10.15,
-      "low": 9.88
     },
     {
       "code": "600059",
@@ -2311,8 +1136,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "108.29亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 108.29,
       "price": 11.88,
       "change_pct": -3.18,
       "volume": 1414941.3,
@@ -2331,8 +1159,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "77.29亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 77.29,
       "price": 3.97,
       "change_pct": 0.0,
       "volume": 1360898.71,
@@ -2340,26 +1171,6 @@
       "open": 3.95,
       "high": 4.12,
       "low": 3.93
-    },
-    {
-      "code": "600121",
-      "name": "郑州煤电",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 5.65,
-      "change_pct": 5.81,
-      "volume": 1996581.05,
-      "turnover": 1110719.842,
-      "open": 5.45,
-      "high": 5.73,
-      "low": 5.37
     },
     {
       "code": "600127",
@@ -2371,8 +1182,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "88.57亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 88.57,
       "price": 13.8,
       "change_pct": 5.02,
       "volume": 2621813.0,
@@ -2380,46 +1194,6 @@
       "open": 13.36,
       "high": 14.45,
       "low": 13.0
-    },
-    {
-      "code": "600130",
-      "name": "波导股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 4.58,
-      "change_pct": 0.44,
-      "volume": 173814.0,
-      "turnover": 79930.808,
-      "open": 4.58,
-      "high": 4.7,
-      "low": 4.53
-    },
-    {
-      "code": "600186",
-      "name": "莲花控股",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 11.46,
-      "change_pct": 0.0,
-      "volume": 1535731.19,
-      "turnover": 1800288.673,
-      "open": 11.75,
-      "high": 12.1,
-      "low": 11.4
     },
     {
       "code": "600189",
@@ -2431,8 +1205,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "62.65亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 62.65,
       "price": 8.76,
       "change_pct": -2.12,
       "volume": 296348.7,
@@ -2451,8 +1228,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "38.82亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 38.82,
       "price": 9.33,
       "change_pct": -7.81,
       "volume": 233379.0,
@@ -2460,46 +1240,6 @@
       "open": 10.0,
       "high": 10.11,
       "low": 9.25
-    },
-    {
-      "code": "600241",
-      "name": "时代万恒",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 10.69,
-      "change_pct": 9.98,
-      "volume": 320324.91,
-      "turnover": 326386.711,
-      "open": 9.72,
-      "high": 10.69,
-      "low": 9.27
-    },
-    {
-      "code": "600256",
-      "name": "广汇能源",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 6.8,
-      "change_pct": 1.95,
-      "volume": 1285455.98,
-      "turnover": 872753.366,
-      "open": 6.75,
-      "high": 6.9,
-      "low": 6.72
     },
     {
       "code": "600322",
@@ -2511,8 +1251,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "31.18亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 31.18,
       "price": 2.82,
       "change_pct": 1.08,
       "volume": 389103.1,
@@ -2520,66 +1263,6 @@
       "open": 2.77,
       "high": 2.85,
       "low": 2.73
-    },
-    {
-      "code": "600333",
-      "name": "长春燃气",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 6.84,
-      "change_pct": 0.29,
-      "volume": 202964.49,
-      "turnover": 139733.871,
-      "open": 6.82,
-      "high": 7.04,
-      "low": 6.75
-    },
-    {
-      "code": "600351",
-      "name": "亚宝药业",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 6.82,
-      "change_pct": 0.0,
-      "volume": 195234.33,
-      "turnover": 133823.311,
-      "open": 6.9,
-      "high": 6.96,
-      "low": 6.78
-    },
-    {
-      "code": "600354",
-      "name": "敦煌种业",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 9.08,
-      "change_pct": -1.73,
-      "volume": 727149.35,
-      "turnover": 669425.636,
-      "open": 9.16,
-      "high": 9.52,
-      "low": 9.01
     },
     {
       "code": "600356",
@@ -2591,8 +1274,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "32.26亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 32.26,
       "price": 10.8,
       "change_pct": -5.76,
       "volume": 265814.29,
@@ -2611,8 +1297,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "39.82亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 39.82,
       "price": 13.61,
       "change_pct": 0.74,
       "volume": 586360.56,
@@ -2631,8 +1320,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "82.95亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 82.95,
       "price": 3.62,
       "change_pct": 10.03,
       "volume": 1101905.12,
@@ -2651,8 +1343,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "177.16亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 177.16,
       "price": 7.41,
       "change_pct": 5.56,
       "volume": 1156800.55,
@@ -2671,8 +1366,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "71.19亿 ✓",
+        "GAP": "月✓ 或 周✗"
       },
+      "circulating_market_cap_yi": 71.19,
       "price": 6.52,
       "change_pct": -2.54,
       "volume": 1395043.69,
@@ -2680,66 +1378,6 @@
       "open": 6.51,
       "high": 6.78,
       "low": 6.49
-    },
-    {
-      "code": "600572",
-      "name": "康恩贝",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 4.3,
-      "change_pct": -0.23,
-      "volume": 367171.03,
-      "turnover": 158515.177,
-      "open": 4.32,
-      "high": 4.36,
-      "low": 4.29
-    },
-    {
-      "code": "600593",
-      "name": "大连圣亚",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 48.97,
-      "change_pct": 1.77,
-      "volume": 121822.02,
-      "turnover": 602733.259,
-      "open": 47.98,
-      "high": 51.2,
-      "low": 47.9
-    },
-    {
-      "code": "600641",
-      "name": "先导基电",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 45.32,
-      "change_pct": -6.69,
-      "volume": 811457.35,
-      "turnover": 3785499.97,
-      "open": 49.13,
-      "high": 50.32,
-      "low": 44.77
     },
     {
       "code": "600664",
@@ -2751,8 +1389,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "182.34亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 182.34,
       "price": 7.24,
       "change_pct": -2.16,
       "volume": 4597253.44,
@@ -2760,46 +1401,6 @@
       "open": 7.58,
       "high": 7.87,
       "low": 7.14
-    },
-    {
-      "code": "600674",
-      "name": "川投能源",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 16.91,
-      "change_pct": 1.74,
-      "volume": 365188.38,
-      "turnover": 616089.13,
-      "open": 16.7,
-      "high": 16.97,
-      "low": 16.65
-    },
-    {
-      "code": "600719",
-      "name": "大连热电",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 8.39,
-      "change_pct": -3.78,
-      "volume": 478478.62,
-      "turnover": 404441.911,
-      "open": 8.46,
-      "high": 8.61,
-      "low": 8.33
     },
     {
       "code": "600721",
@@ -2811,8 +1412,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "48.38亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 48.38,
       "price": 12.58,
       "change_pct": -4.04,
       "volume": 943549.19,
@@ -2831,8 +1435,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "110.14亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 110.14,
       "price": 16.19,
       "change_pct": 9.99,
       "volume": 824602.07,
@@ -2840,46 +1447,6 @@
       "open": 15.4,
       "high": 16.19,
       "low": 15.4
-    },
-    {
-      "code": "600792",
-      "name": "云煤能源",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 5.22,
-      "change_pct": 3.57,
-      "volume": 968862.17,
-      "turnover": 505869.598,
-      "open": 5.03,
-      "high": 5.36,
-      "low": 4.93
-    },
-    {
-      "code": "600801",
-      "name": "华新建材",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 23.65,
-      "change_pct": -0.63,
-      "volume": 103667.34,
-      "turnover": 244668.761,
-      "open": 23.8,
-      "high": 24.0,
-      "low": 22.86
     },
     {
       "code": "600802",
@@ -2891,8 +1458,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "32.72亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 32.72,
       "price": 7.14,
       "change_pct": -1.38,
       "volume": 789454.51,
@@ -2911,8 +1481,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "68.13亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 68.13,
       "price": 3.84,
       "change_pct": 0.52,
       "volume": 1389979.51,
@@ -2931,8 +1504,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "119.01亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 119.01,
       "price": 11.39,
       "change_pct": 10.05,
       "volume": 56474.58,
@@ -2940,26 +1516,6 @@
       "open": 11.39,
       "high": 11.39,
       "low": 11.39
-    },
-    {
-      "code": "600881",
-      "name": "亚泰集团",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 1.86,
-      "change_pct": 0.54,
-      "volume": 860672.53,
-      "turnover": 160163.346,
-      "open": 1.85,
-      "high": 1.88,
-      "low": 1.84
     },
     {
       "code": "600903",
@@ -2971,8 +1527,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "79.62亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 79.62,
       "price": 6.84,
       "change_pct": 2.4,
       "volume": 633336.38,
@@ -2991,8 +1550,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "96.44亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 96.44,
       "price": 5.88,
       "change_pct": -1.34,
       "volume": 203795.0,
@@ -3000,26 +1562,6 @@
       "open": 5.98,
       "high": 6.04,
       "low": 5.86
-    },
-    {
-      "code": "600989",
-      "name": "宝丰能源",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 23.32,
-      "change_pct": 3.83,
-      "volume": 722094.24,
-      "turnover": 1683179.257,
-      "open": 22.99,
-      "high": 23.72,
-      "low": 22.82
     },
     {
       "code": "601156",
@@ -3031,8 +1573,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "174.47亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 174.47,
       "price": 18.47,
       "change_pct": 0.44,
       "volume": 74105.47,
@@ -3051,8 +1596,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "57.66亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 57.66,
       "price": 5.95,
       "change_pct": -2.14,
       "volume": 1881085.21,
@@ -3060,106 +1608,6 @@
       "open": 5.97,
       "high": 6.3,
       "low": 5.92
-    },
-    {
-      "code": "601579",
-      "name": "会稽山",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 39.6,
-      "change_pct": 6.17,
-      "volume": 589745.02,
-      "turnover": 2347559.819,
-      "open": 36.0,
-      "high": 41.03,
-      "low": 36.0
-    },
-    {
-      "code": "601665",
-      "name": "齐鲁银行",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 7.15,
-      "change_pct": 0.28,
-      "volume": 493419.26,
-      "turnover": 352266.179,
-      "open": 7.09,
-      "high": 7.19,
-      "low": 7.07
-    },
-    {
-      "code": "601666",
-      "name": "平煤股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 8.85,
-      "change_pct": 0.34,
-      "volume": 189384.0,
-      "turnover": 168126.361,
-      "open": 8.82,
-      "high": 9.0,
-      "low": 8.8
-    },
-    {
-      "code": "601699",
-      "name": "潞安环能",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 15.27,
-      "change_pct": 1.19,
-      "volume": 180591.55,
-      "turnover": 274783.053,
-      "open": 15.12,
-      "high": 15.31,
-      "low": 15.04
-    },
-    {
-      "code": "601700",
-      "name": "风范股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 6.38,
-      "change_pct": 3.07,
-      "volume": 571824.76,
-      "turnover": 366187.117,
-      "open": 6.28,
-      "high": 6.57,
-      "low": 6.24
     },
     {
       "code": "601811",
@@ -3171,8 +1619,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "150.54亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 150.54,
       "price": 19.01,
       "change_pct": -9.99,
       "volume": 406378.22,
@@ -3180,106 +1631,6 @@
       "open": 20.77,
       "high": 21.7,
       "low": 19.01
-    },
-    {
-      "code": "601857",
-      "name": "中国石油",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 11.59,
-      "change_pct": 3.39,
-      "volume": 1545961.79,
-      "turnover": 1781854.581,
-      "open": 11.2,
-      "high": 11.66,
-      "low": 11.18
-    },
-    {
-      "code": "601886",
-      "name": "江河集团",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.89,
-      "change_pct": -1.53,
-      "volume": 90961.86,
-      "turnover": 117256.164,
-      "open": 13.0,
-      "high": 13.14,
-      "low": 12.7
-    },
-    {
-      "code": "601918",
-      "name": "新集能源",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 11.53,
-      "change_pct": 2.13,
-      "volume": 410927.76,
-      "turnover": 469761.318,
-      "open": 11.29,
-      "high": 11.58,
-      "low": 11.17
-    },
-    {
-      "code": "601975",
-      "name": "招商南油",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 4.97,
-      "change_pct": 9.96,
-      "volume": 2972763.99,
-      "turnover": 1466802.817,
-      "open": 4.7,
-      "high": 4.97,
-      "low": 4.68
-    },
-    {
-      "code": "601988",
-      "name": "中国银行",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 6.81,
-      "change_pct": 1.19,
-      "volume": 2599267.29,
-      "turnover": 1769228.455,
-      "open": 6.7,
-      "high": 6.87,
-      "low": 6.69
     },
     {
       "code": "603001",
@@ -3291,8 +1642,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "45.43亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 45.43,
       "price": 11.33,
       "change_pct": 0.35,
       "volume": 112877.0,
@@ -3300,26 +1654,6 @@
       "open": 11.29,
       "high": 11.49,
       "low": 11.1
-    },
-    {
-      "code": "603012",
-      "name": "创力集团",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 8.61,
-      "change_pct": 1.18,
-      "volume": 156072.45,
-      "turnover": 136030.973,
-      "open": 8.52,
-      "high": 8.92,
-      "low": 8.52
     },
     {
       "code": "603042",
@@ -3331,8 +1665,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "33.51亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 33.51,
       "price": 16.05,
       "change_pct": -3.66,
       "volume": 275282.35,
@@ -3340,86 +1677,6 @@
       "open": 16.79,
       "high": 16.97,
       "low": 15.91
-    },
-    {
-      "code": "603048",
-      "name": "浙江黎明",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 24.12,
-      "change_pct": -4.55,
-      "volume": 28218.0,
-      "turnover": 69475.885,
-      "open": 25.58,
-      "high": 25.7,
-      "low": 23.98
-    },
-    {
-      "code": "603105",
-      "name": "芯能科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 8.8,
-      "change_pct": 3.53,
-      "volume": 242921.47,
-      "turnover": 208681.405,
-      "open": 8.51,
-      "high": 8.8,
-      "low": 8.4
-    },
-    {
-      "code": "603110",
-      "name": "东方材料",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 23.95,
-      "change_pct": -0.75,
-      "volume": 93293.0,
-      "turnover": 230094.109,
-      "open": 24.12,
-      "high": 25.59,
-      "low": 23.76
-    },
-    {
-      "code": "603116",
-      "name": "红蜻蜓",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 7.15,
-      "change_pct": -1.79,
-      "volume": 148619.8,
-      "turnover": 106811.595,
-      "open": 7.43,
-      "high": 7.46,
-      "low": 7.09
     },
     {
       "code": "603118",
@@ -3431,8 +1688,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "118.72亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 118.72,
       "price": 15.08,
       "change_pct": -4.07,
       "volume": 551981.5,
@@ -3440,86 +1700,6 @@
       "open": 15.9,
       "high": 16.09,
       "low": 14.9
-    },
-    {
-      "code": "603177",
-      "name": "德创环保",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 10.8,
-      "change_pct": -1.91,
-      "volume": 24054.0,
-      "turnover": 26251.123,
-      "open": 11.02,
-      "high": 11.19,
-      "low": 10.72
-    },
-    {
-      "code": "603217",
-      "name": "元利科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 26.5,
-      "change_pct": -2.11,
-      "volume": 24491.4,
-      "turnover": 65847.65,
-      "open": 27.04,
-      "high": 27.62,
-      "low": 26.39
-    },
-    {
-      "code": "603228",
-      "name": "景旺电子",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 97.89,
-      "change_pct": -3.28,
-      "volume": 265810.23,
-      "turnover": 2687337.542,
-      "open": 102.0,
-      "high": 105.68,
-      "low": 96.75
-    },
-    {
-      "code": "603268",
-      "name": "松发股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 218.75,
-      "change_pct": 2.38,
-      "volume": 85155.61,
-      "turnover": 1885362.921,
-      "open": 217.93,
-      "high": 226.29,
-      "low": 215.91
     },
     {
       "code": "603269",
@@ -3531,8 +1711,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "104.96亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 104.96,
       "price": 24.3,
       "change_pct": 4.92,
       "volume": 383511.94,
@@ -3551,8 +1734,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "63.28亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 63.28,
       "price": 37.13,
       "change_pct": -3.16,
       "volume": 54895.0,
@@ -3560,26 +1746,6 @@
       "open": 38.59,
       "high": 38.99,
       "low": 36.7
-    },
-    {
-      "code": "603386",
-      "name": "骏亚科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 17.5,
-      "change_pct": 0.57,
-      "volume": 114977.27,
-      "turnover": 201369.963,
-      "open": 17.57,
-      "high": 18.03,
-      "low": 17.16
     },
     {
       "code": "603387",
@@ -3591,8 +1757,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "51.53亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 51.53,
       "price": 10.16,
       "change_pct": 1.5,
       "volume": 131577.6,
@@ -3611,8 +1780,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "51.09亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 51.09,
       "price": 12.65,
       "change_pct": -4.02,
       "volume": 109702.0,
@@ -3631,8 +1803,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "68.46亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 68.46,
       "price": 11.51,
       "change_pct": -3.11,
       "volume": 302561.23,
@@ -3640,46 +1815,6 @@
       "open": 11.91,
       "high": 11.98,
       "low": 11.42
-    },
-    {
-      "code": "603519",
-      "name": "立霸股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 16.43,
-      "change_pct": -3.47,
-      "volume": 78592.0,
-      "turnover": 131755.066,
-      "open": 16.88,
-      "high": 17.5,
-      "low": 16.21
-    },
-    {
-      "code": "603558",
-      "name": "健盛集团",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.85,
-      "change_pct": -0.23,
-      "volume": 29421.0,
-      "turnover": 37748.378,
-      "open": 12.77,
-      "high": 12.98,
-      "low": 12.75
     },
     {
       "code": "603559",
@@ -3691,8 +1826,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "34.55亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 34.55,
       "price": 8.61,
       "change_pct": 0.47,
       "volume": 62501.0,
@@ -3711,8 +1849,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "94.96亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 94.96,
       "price": 72.67,
       "change_pct": -0.38,
       "volume": 39157.0,
@@ -3720,46 +1861,6 @@
       "open": 72.98,
       "high": 74.6,
       "low": 71.29
-    },
-    {
-      "code": "603587",
-      "name": "地素时尚",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.37,
-      "change_pct": -0.48,
-      "volume": 35687.73,
-      "turnover": 44208.135,
-      "open": 12.43,
-      "high": 12.62,
-      "low": 12.27
-    },
-    {
-      "code": "603657",
-      "name": "春光科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 37.37,
-      "change_pct": -5.39,
-      "volume": 66857.0,
-      "turnover": 254306.122,
-      "open": 39.51,
-      "high": 41.08,
-      "low": 36.68
     },
     {
       "code": "603727",
@@ -3771,8 +1872,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "57.05亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 57.05,
       "price": 20.25,
       "change_pct": 8.23,
       "volume": 139939.35,
@@ -3791,8 +1895,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "57.50亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 57.5,
       "price": 20.48,
       "change_pct": -1.68,
       "volume": 12483.84,
@@ -3800,106 +1907,6 @@
       "open": 20.99,
       "high": 21.1,
       "low": 20.39
-    },
-    {
-      "code": "603790",
-      "name": "雅运股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 25.3,
-      "change_pct": 2.22,
-      "volume": 34284.76,
-      "turnover": 88046.447,
-      "open": 24.89,
-      "high": 26.58,
-      "low": 24.79
-    },
-    {
-      "code": "603797",
-      "name": "联泰环保",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 4.77,
-      "change_pct": -1.04,
-      "volume": 435620.17,
-      "turnover": 211248.611,
-      "open": 4.51,
-      "high": 5.08,
-      "low": 4.51
-    },
-    {
-      "code": "603818",
-      "name": "曲美家居",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 4.05,
-      "change_pct": 0.0,
-      "volume": 219757.83,
-      "turnover": 89915.71,
-      "open": 4.06,
-      "high": 4.14,
-      "low": 4.0
-    },
-    {
-      "code": "603819",
-      "name": "神力股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 15.96,
-      "change_pct": -0.62,
-      "volume": 54188.82,
-      "turnover": 86729.251,
-      "open": 16.38,
-      "high": 16.38,
-      "low": 15.77
-    },
-    {
-      "code": "603836",
-      "name": "海程邦达",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 9.59,
-      "change_pct": 0.42,
-      "volume": 22673.6,
-      "turnover": 21712.418,
-      "open": 9.6,
-      "high": 9.66,
-      "low": 9.42
     },
     {
       "code": "603882",
@@ -3911,8 +1918,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "129.58亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 129.58,
       "price": 28.29,
       "change_pct": -2.65,
       "volume": 96616.0,
@@ -3920,66 +1930,6 @@
       "open": 29.64,
       "high": 29.75,
       "low": 28.27
-    },
-    {
-      "code": "603893",
-      "name": "瑞芯微",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 199.56,
-      "change_pct": -7.43,
-      "volume": 109375.93,
-      "turnover": 2249092.701,
-      "open": 211.99,
-      "high": 215.39,
-      "low": 198.13
-    },
-    {
-      "code": "603968",
-      "name": "醋化股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 12.3,
-      "change_pct": 6.96,
-      "volume": 237896.89,
-      "turnover": 284314.009,
-      "open": 11.45,
-      "high": 12.44,
-      "low": 11.37
-    },
-    {
-      "code": "603976",
-      "name": "正川股份",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 29.25,
-      "change_pct": -1.15,
-      "volume": 28593.64,
-      "turnover": 83873.869,
-      "open": 29.59,
-      "high": 30.18,
-      "low": 28.8
     },
     {
       "code": "603980",
@@ -3991,8 +1941,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "60.92亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 60.92,
       "price": 9.0,
       "change_pct": -0.66,
       "volume": 609440.2,
@@ -4011,8 +1964,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "146.80亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 146.8,
       "price": 163.96,
       "change_pct": -1.12,
       "volume": 21583.16,
@@ -4031,8 +1987,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "91.81亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 91.81,
       "price": 25.25,
       "change_pct": -1.44,
       "volume": 45668.0,
@@ -4051,8 +2010,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "69.32亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 69.32,
       "price": 48.5,
       "change_pct": -9.58,
       "volume": 185421.67,
@@ -4060,26 +2022,6 @@
       "open": 52.57,
       "high": 52.89,
       "low": 48.28
-    },
-    {
-      "code": "605089",
-      "name": "味知香",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 22.43,
-      "change_pct": 2.7,
-      "volume": 19897.25,
-      "turnover": 44251.734,
-      "open": 21.93,
-      "high": 22.48,
-      "low": 21.79
     },
     {
       "code": "605162",
@@ -4091,8 +2033,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "45.83亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 45.83,
       "price": 10.35,
       "change_pct": -2.27,
       "volume": 297730.03,
@@ -4111,8 +2056,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "99.84亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 99.84,
       "price": 47.36,
       "change_pct": -5.34,
       "volume": 44641.53,
@@ -4120,26 +2068,6 @@
       "open": 50.01,
       "high": 51.0,
       "low": 46.88
-    },
-    {
-      "code": "605177",
-      "name": "东亚药业",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 25.72,
-      "change_pct": 6.02,
-      "volume": 132782.0,
-      "turnover": 347291.144,
-      "open": 24.3,
-      "high": 26.69,
-      "low": 24.3
     },
     {
       "code": "605198",
@@ -4151,8 +2079,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "172.06亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 172.06,
       "price": 63.6,
       "change_pct": -1.78,
       "volume": 35063.66,
@@ -4160,26 +2091,6 @@
       "open": 64.43,
       "high": 66.27,
       "low": 62.77
-    },
-    {
-      "code": "605258",
-      "name": "协和电子",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 38.48,
-      "change_pct": -2.85,
-      "volume": 71471.8,
-      "turnover": 280097.812,
-      "open": 39.61,
-      "high": 40.75,
-      "low": 38.15
     },
     {
       "code": "605577",
@@ -4191,8 +2102,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "65.47亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 65.47,
       "price": 14.73,
       "change_pct": -9.52,
       "volume": 361423.26,
@@ -4211,8 +2125,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "45.45亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 45.45,
       "price": 44.48,
       "change_pct": -3.87,
       "volume": 32839.4,
@@ -4231,8 +2148,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "35.04亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 35.04,
       "price": 19.44,
       "change_pct": -0.77,
       "volume": 78452.15,
@@ -4251,8 +2171,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "82.31亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 82.31,
       "price": 35.31,
       "change_pct": -3.26,
       "volume": 97093.65,
@@ -4260,46 +2183,6 @@
       "open": 36.93,
       "high": 37.84,
       "low": 34.93
-    },
-    {
-      "code": "688216",
-      "name": "气派科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✗ 或 周✓",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 35.95,
-      "change_pct": -5.1,
-      "volume": 50986.22,
-      "turnover": 188127.561,
-      "open": 37.38,
-      "high": 38.89,
-      "low": 35.48
-    },
-    {
-      "code": "688217",
-      "name": "睿昂基因",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 25.24,
-      "change_pct": -1.6,
-      "volume": 13994.81,
-      "turnover": 36061.201,
-      "open": 26.1,
-      "high": 27.0,
-      "low": 25.14
     },
     {
       "code": "688222",
@@ -4311,8 +2194,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "168.17亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 168.17,
       "price": 41.92,
       "change_pct": -6.2,
       "volume": 244049.07,
@@ -4331,8 +2217,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "35.41亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 35.41,
       "price": 18.65,
       "change_pct": -4.36,
       "volume": 100056.64,
@@ -4351,8 +2240,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "26.47亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 26.47,
       "price": 6.6,
       "change_pct": -1.35,
       "volume": 42654.73,
@@ -4360,26 +2252,6 @@
       "open": 6.78,
       "high": 6.98,
       "low": 6.57
-    },
-    {
-      "code": "688505",
-      "name": "复旦张江",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 8.26,
-      "change_pct": -3.39,
-      "volume": 127623.51,
-      "turnover": 106311.541,
-      "open": 8.59,
-      "high": 8.67,
-      "low": 8.19
     },
     {
       "code": "688517",
@@ -4391,8 +2263,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "24.90亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 24.9,
       "price": 18.23,
       "change_pct": -2.51,
       "volume": 68685.54,
@@ -4400,26 +2275,6 @@
       "open": 18.71,
       "high": 18.89,
       "low": 17.68
-    },
-    {
-      "code": "688596",
-      "name": "正帆科技",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 54.45,
-      "change_pct": -6.01,
-      "volume": 109358.82,
-      "turnover": 607700.284,
-      "open": 57.39,
-      "high": 58.0,
-      "low": 53.88
     },
     {
       "code": "688613",
@@ -4431,8 +2286,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "26.20亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 26.2,
       "price": 19.12,
       "change_pct": -4.88,
       "volume": 55681.13,
@@ -4451,8 +2309,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "90.45亿 ✓",
+        "GAP": "月✓ 或 周✓"
       },
+      "circulating_market_cap_yi": 90.45,
       "price": 67.81,
       "change_pct": -5.69,
       "volume": 119117.98,
@@ -4460,66 +2321,6 @@
       "open": 74.77,
       "high": 76.0,
       "low": 66.6
-    },
-    {
-      "code": "688670",
-      "name": "金迪克",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 18.22,
-      "change_pct": -2.72,
-      "volume": 26021.82,
-      "turnover": 47555.878,
-      "open": 18.9,
-      "high": 19.48,
-      "low": 17.8
-    },
-    {
-      "code": "688697",
-      "name": "纽威数控",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 14.08,
-      "change_pct": -1.88,
-      "volume": 56961.52,
-      "turnover": 80872.694,
-      "open": 14.41,
-      "high": 14.58,
-      "low": 13.89
-    },
-    {
-      "code": "688767",
-      "name": "博拓生物",
-      "detail": {
-        "BOLL": "月✓ 周✓",
-        "MACD": "月✓ 或 周✗",
-        "OBV": "月✓ 周✓",
-        "DMA": "周✓",
-        "AMO": "✓",
-        "KDJ": "月✓",
-        "MA5": "月✓"
-      },
-      "price": 40.38,
-      "change_pct": 0.45,
-      "volume": 62169.75,
-      "turnover": 262638.132,
-      "open": 42.2,
-      "high": 44.0,
-      "low": 40.04
     },
     {
       "code": "688768",
@@ -4531,8 +2332,11 @@
         "DMA": "周✓",
         "AMO": "✓",
         "KDJ": "月✓",
-        "MA5": "月✓"
+        "MA5": "月✓",
+        "CAP": "45.31亿 ✓",
+        "GAP": "月✗ 或 周✓"
       },
+      "circulating_market_cap_yi": 45.31,
       "price": 51.92,
       "change_pct": -0.73,
       "volume": 10838.06,
