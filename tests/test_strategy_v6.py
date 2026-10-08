@@ -62,8 +62,9 @@ class V6StrategyTests(unittest.TestCase):
 
     def test_volume_event_outside_window_does_not_count(self):
         month, week = frame(60), frame(220)
-        month.loc[10, 'vol'] = month.loc[9, 'vol'] * 3
-        week.loc[219, 'vol'] = week.loc[218, 'vol'] * 2
+        # Events inside the old multi-year windows but outside the new one-year windows.
+        month.loc[45, 'vol'] = month.loc[44, 'vol'] * 3
+        week.loc[160, 'vol'] = week.loc[159, 'vol'] * 2
         self.assertFalse(strategy.calc_amo(month, week))
 
     def test_macd_requires_recent_real_cross_and_hold(self):

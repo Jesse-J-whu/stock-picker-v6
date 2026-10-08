@@ -3,7 +3,7 @@
 ======================
 所有价格指标使用前复权行情，成交量不复权。十组条件全部满足：
 月/周 BOLL 历史形态、月或周 MACD 金叉保持、月周 OBV、周 DMA、
-四年月/周放量、两年月 KDJ 顺序金叉，以及两年月收盘价曾高于 MA5。
+一年内月/周放量、月 KDJ 顺序金叉，以及月收盘价曾高于 MA5。
 """
 
 import numpy as np
@@ -297,8 +297,8 @@ def calc_boll_week(df, period=20):
     return duck | all_up
 
 
-def calc_week_close_above_mid_after_latest_duck(df, lookback=104, period=20):
-    """最近两年内最近一次周鸭口起，周收盘价始终严格高于BOLL中轨。"""
+def calc_week_close_above_mid_after_latest_duck(df, lookback=52, period=20):
+    """最近一年内最近一次周鸭口起，周收盘价始终严格高于BOLL中轨。"""
     duck = calc_boll(df, period)
     start = max(0, len(df) - lookback)
     positions = np.flatnonzero(duck.to_numpy())
@@ -373,11 +373,11 @@ def calc_dma(df):
 
 
 def calc_amo(df_month, df_week):
-    """四年内月量至少一次 >=3倍前月，且周量至少一次 >=2倍前周。"""
+    """一年内月量至少一次 >=3倍前月，且周量至少一次 >=2倍前周。"""
     monthly = df_month['vol'] / ref(df_month['vol'], 1)
     weekly = df_week['vol'] / ref(df_week['vol'], 1)
-    month_ok = bool((monthly.tail(48) >= 3.0).any())
-    week_ok = bool((weekly.tail(208) >= 2.0).any())
+    month_ok = bool((monthly.tail(12) >= 3.0).any())
+    week_ok = bool((weekly.tail(52) >= 2.0).any())
     return month_ok and week_ok
 
 
@@ -404,7 +404,7 @@ def calc_kdj_values(df, n=9, m1=3, m2=3):
     return k, d, j
 
 
-def calc_kdj_sequential(df, lookback=24):
+def calc_kdj_sequential(df, lookback=12):
     """允许 J上穿K、K上穿D先后发生，之后实际形成 J>K>D。"""
     k, d, j = calc_kdj_values(df)
     jk_cross = cross_up(j, k)
@@ -420,8 +420,8 @@ def calc_kdj_sequential(df, lookback=24):
     return False
 
 
-def calc_ma5_history(df_month, lookback=24):
-    """近两年内至少一期月收盘价严格高于月 MA5。"""
+def calc_ma5_history(df_month, lookback=12):
+    """近一年内至少一期月收盘价严格高于月 MA5。"""
     ma5 = ma(df_month['close'], 5)
     return bool((df_month['close'].tail(lookback) > ma5.tail(lookback)).any())
 
@@ -444,20 +444,20 @@ def calc_circulating_market_cap(circ_mv_wan):
 
 def evaluate_conditions(df_month, df_week, circ_mv_wan):
     """返回十组经用户确认的条件；策略只在所有条件为真时命中。"""
-    boll_m = bool(exist(calc_boll(df_month), 24).iloc[-1])
-    boll_w = bool(exist(calc_boll_week(df_week), 104).iloc[-1])
-    macd_m = macd_recent_cross_hold(df_month, 24, with_zero_filter=False)
-    macd_w = macd_recent_cross_hold(df_week, 104, with_zero_filter=True)
+    boll_m = bool(exist(calc_boll(df_month), 12).iloc[-1])
+    boll_w = bool(exist(calc_boll_week(df_week), 52).iloc[-1])
+    macd_m = macd_recent_cross_hold(df_month, 12, with_zero_filter=False)
+    macd_w = macd_recent_cross_hold(df_week, 52, with_zero_filter=True)
     obv_m = bool(calc_obv(df_month).iloc[-1])
     obv_w = bool(calc_obv(df_week).iloc[-1])
     dma_w = bool(calc_dma(df_week).iloc[-1])
     amo = calc_amo(df_month, df_week)
-    kdj_m = calc_kdj_sequential(df_month, 24)
-    ma5_m = calc_ma5_history(df_month, 24)
+    kdj_m = calc_kdj_sequential(df_month, 12)
+    ma5_m = calc_ma5_history(df_month, 12)
     cap = calc_circulating_market_cap(circ_mv_wan)
-    gap_m = calc_gap_up(df_month, 24)
-    gap_w = calc_gap_up(df_week, 104)
-    boll_hold_w = calc_week_close_above_mid_after_latest_duck(df_week, 104)
+    gap_m = calc_gap_up(df_month, 12)
+    gap_w = calc_gap_up(df_week, 52)
+    boll_hold_w = calc_week_close_above_mid_after_latest_duck(df_week, 52)
     return {
         'BOLL': boll_m and boll_w,
         'MACD': macd_m or macd_w,
@@ -507,8 +507,8 @@ def apply_strategy_detail(df_month, df_week, circ_mv_wan, df_day=None):
 # 主流程
 # ============================================================
 
-MIN_MONTH = 60
-MIN_WEEK  = 209  # 208周窗口还需要前一周作为成交量比较基准。
+MIN_MONTH = 30  # MACD(26)等月线指标需要窗口前的预热数据。
+MIN_WEEK  = 60  # DMA(50,10)等周线指标需要窗口前的预热数据。
 
 FETCH_MONTH = 60
 FETCH_WEEK  = 260
@@ -784,25 +784,25 @@ body {
     </div>
     <div class="tags">
         <span class="tag tag-v4">★ 十组条件</span>
-        <span class="tag tag-boll">BOLL 月24/周104</span>
+        <span class="tag tag-boll">BOLL 月12/周52</span>
         <span class="tag tag-macd">MACD 月或周</span>
         <span class="tag tag-obv">OBV 月/周</span>
         <span class="tag tag-dma">DMA 周</span>
-        <span class="tag tag-amo">量能 月48/周208</span>
-        <span class="tag tag-kdj">KDJ 月24</span>
+        <span class="tag tag-amo">量能 月12/周52</span>
+        <span class="tag tag-kdj">KDJ 月12</span>
         <span class="tag tag-v4">月收盘价 &gt; MA5</span>
         <span class="tag tag-cap">流通市值 20～200亿</span>
-        <span class="tag tag-gap">两年月/周向上跳空</span>
+        <span class="tag tag-gap">一年内月/周向上跳空</span>
         <span class="tag tag-boll">周鸭口后收盘始终高于中轨</span>
     </div>
 </div>
 
 <div class="strategy-desc">
     <strong>策略逻辑（V6）：</strong>
-    十组条件全部通过：近两年月线鸭口 + 周线鸭口或三轨向上；月线或零轴上周线 MACD
-    金叉后保持；月周 OBV 均线上方；周 DMA；四年内月量≥3倍且周量≥2倍；
-    两年内月 KDJ 先后上穿并形成 J&gt;K&gt;D；两年内月收盘价曾高于 MA5；
-    流通市值20～200亿元；两年内月线或周线至少一次向上跳空≥0.02元；
+    十组条件全部通过：近一年月线鸭口 + 周线鸭口或三轨向上；月线或零轴上周线 MACD
+    金叉后保持；月周 OBV 均线上方；周 DMA；一年内月量≥3倍且周量≥2倍；
+    一年内月 KDJ 先后上穿并形成 J&gt;K&gt;D；一年内月收盘价曾高于 MA5；
+    流通市值20～200亿元；一年内月线或周线至少一次向上跳空≥0.02元；
     最近一次周线鸭口出现后至今，每周收盘价始终严格高于周BOLL中轨。
 </div>
 
@@ -912,16 +912,16 @@ def save_data_json(selected_stocks, output_path):
         'data_quality': MARKET_DATA.metadata(),
         'strategy': '长周期鸭口选股 V6',
         'conditions': {
-            'BOLL': '月24期内UB↑/MID↑/LB↓，且周104期内同形态或三轨均↑',
-            'MACD': '月24期金叉保持，或周104期零轴上金叉保持',
+            'BOLL': '月12期内UB↑/MID↑/LB↓，且周52期内同形态或三轨均↑',
+            'MACD': '月12期金叉保持，或周52期零轴上金叉保持',
             'OBV': '最新月线及周线 OBV>MAOBV(20)',
             'DMA': '最新周线 DIF_DMA>DIFMA',
-            'AMO': '成交量（非成交额）：月48期内≥前月3倍且周208期内≥前周2倍',
-            'KDJ': '月24期内J/K与K/D允许先后上穿，最终形成J>K>D',
-            'MA5': '月24期内至少一期收盘价>月MA5',
+            'AMO': '成交量（非成交额）：月12期内≥前月3倍且周52期内≥前周2倍',
+            'KDJ': '月12期内J/K与K/D允许先后上穿，最终形成J>K>D',
+            'MA5': '月12期内至少一期收盘价>月MA5',
             'CAP': '交易日流通市值20亿～200亿元（含边界）',
-            'GAP': '近24个月或104周内至少一次本期最低价≥前一期最高价+0.02元',
-            'BOLL_HOLD': '近104周最近一次周线鸭口出现后，每周收盘价始终严格高于周BOLL中轨',
+            'GAP': '近12个月或52周内至少一次本期最低价≥前一期最高价+0.02元',
+            'BOLL_HOLD': '近52周最近一次周线鸭口出现后，每周收盘价始终严格高于周BOLL中轨',
         },
         'adjustment': 'qfq',
         'data_source': SOURCE,
