@@ -1,7 +1,7 @@
 """
 长周期鸭口选股策略 V6
 ======================
-所有价格指标使用前复权行情，成交量不复权。七组条件全部满足：
+所有价格指标使用前复权行情，成交量不复权。九组条件全部满足：
 月/周 BOLL 历史形态、月或周 MACD 金叉保持、月周 OBV、周 DMA、
 四年月/周放量、两年月 KDJ 顺序金叉，以及两年月收盘价曾高于 MA5。
 """
@@ -413,12 +413,24 @@ def calc_ma5_history(df_month, lookback=24):
     return bool((df_month['close'].tail(lookback) > ma5.tail(lookback)).any())
 
 
+def calc_gap_up(df, lookback):
+    """窗口内至少一次向上跳空：本期最低价比前一期最高价至少高0.02元。"""
+    gap = df['low'] - ref(df['high'], 1)
+    return bool((gap.tail(lookback) >= 0.02 - 1e-9).any())
+
+
+def calc_circulating_market_cap(circ_mv_wan):
+    """Tushare circ_mv 的单位是万元；20亿至200亿元均含边界。"""
+    value = float(circ_mv_wan)
+    return 200_000.0 <= value <= 2_000_000.0
+
+
 # ============================================================
-# 主策略：七组长周期月/周线条件
+# 主策略：九组长周期月/周线条件
 # ============================================================
 
-def evaluate_conditions(df_month, df_week):
-    """返回七组经用户确认的条件；策略只在所有条件为真时命中。"""
+def evaluate_conditions(df_month, df_week, circ_mv_wan):
+    """返回九组经用户确认的条件；策略只在所有条件为真时命中。"""
     boll_m = bool(exist(calc_boll(df_month), 24).iloc[-1])
     boll_w = bool(exist(calc_boll_week(df_week), 104).iloc[-1])
     macd_m = macd_recent_cross_hold(df_month, 24, with_zero_filter=False)
@@ -429,6 +441,9 @@ def evaluate_conditions(df_month, df_week):
     amo = calc_amo(df_month, df_week)
     kdj_m = calc_kdj_sequential(df_month, 24)
     ma5_m = calc_ma5_history(df_month, 24)
+    cap = calc_circulating_market_cap(circ_mv_wan)
+    gap_m = calc_gap_up(df_month, 24)
+    gap_w = calc_gap_up(df_week, 104)
     return {
         'BOLL': boll_m and boll_w,
         'MACD': macd_m or macd_w,
@@ -437,21 +452,25 @@ def evaluate_conditions(df_month, df_week):
         'AMO': amo,
         'KDJ': kdj_m,
         'MA5': ma5_m,
+        'CAP': cap,
+        'GAP': gap_m or gap_w,
         '_parts': {
             'boll_month': boll_m, 'boll_week': boll_w,
             'macd_month': macd_m, 'macd_week': macd_w,
             'obv_month': obv_m, 'obv_week': obv_w,
+            'gap_month': gap_m, 'gap_week': gap_w,
         },
     }
 
 
-def apply_strategy(df_month, df_week, df_day=None):
-    conditions = evaluate_conditions(df_month, df_week)
-    return all(conditions[key] for key in ('BOLL', 'MACD', 'OBV', 'DMA', 'AMO', 'KDJ', 'MA5'))
+def apply_strategy(df_month, df_week, circ_mv_wan, df_day=None):
+    conditions = evaluate_conditions(df_month, df_week, circ_mv_wan)
+    return all(conditions[key] for key in
+               ('BOLL', 'MACD', 'OBV', 'DMA', 'AMO', 'KDJ', 'MA5', 'CAP', 'GAP'))
 
 
-def apply_strategy_detail(df_month, df_week, df_day=None):
-    conditions = evaluate_conditions(df_month, df_week)
+def apply_strategy_detail(df_month, df_week, circ_mv_wan, df_day=None):
+    conditions = evaluate_conditions(df_month, df_week, circ_mv_wan)
     parts = conditions['_parts']
     mark = lambda value: '✓' if value else '✗'
     return {
@@ -462,6 +481,8 @@ def apply_strategy_detail(df_month, df_week, df_day=None):
         'AMO': mark(conditions['AMO']),
         'KDJ': f"月{mark(conditions['KDJ'])}",
         'MA5': f"月{mark(conditions['MA5'])}",
+        'CAP': f"{float(circ_mv_wan) / 10_000:.2f}亿 {mark(conditions['CAP'])}",
+        'GAP': f"月{mark(parts['gap_month'])} 或 周{mark(parts['gap_week'])}",
     }
 
 
@@ -490,6 +511,10 @@ def run_strategy():
     selected = []
     total    = len(stocks)
     failed   = 0
+    market_caps = {ts_code[:6]: float(value)
+                   for ts_code, value in MARKET_DATA.raw['circ_mv'].items()}
+    if set(stocks['代码']) - set(market_caps):
+        raise MarketDataError("流通市值覆盖不完整，禁止发布")
 
     print(f"\n[2/4] 逐只计算策略信号（共 {total} 只）...")
     for idx, row in stocks.iterrows():
@@ -509,14 +534,16 @@ def run_strategy():
             continue
 
         try:
-            hit = apply_strategy(df_month, df_week)
+            circ_mv_wan = market_caps[code]
+            hit = apply_strategy(df_month, df_week, circ_mv_wan)
             MARKET_DATA.stats["evaluated"] += 1
             if hit:
-                detail = apply_strategy_detail(df_month, df_week)
+                detail = apply_strategy_detail(df_month, df_week, circ_mv_wan)
                 selected.append({
                     'code':   code,
                     'name':   name,
                     'detail': detail,
+                    'circulating_market_cap_yi': round(circ_mv_wan / 10_000, 2),
                 })
                 print(f"  ★ 选中: {code} {name}")
         except Exception as e:
@@ -609,6 +636,8 @@ body {
 .tag-dma   { background: rgba(244,114,182,0.10); color: #f472b6; }
 .tag-amo   { background: rgba(34,211,238,0.10);  color: #22d3ee; }
 .tag-kdj   { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.tag-cap   { background: rgba(45,212,191,0.12); color: #5eead4; }
+.tag-gap   { background: rgba(251,146,60,0.12); color: #fb923c; }
 .strategy-desc {
     background: rgba(90,120,255,0.05);
     border: 1px solid rgba(90,120,255,0.12);
@@ -710,6 +739,8 @@ body {
 .sig-dma  { background: rgba(244,114,182,0.1); color: #f472b6; }
 .sig-amo  { background: rgba(34,211,238,0.1);  color: #22d3ee; }
 .sig-kdj  { background: rgba(167,139,250,0.1); color: #a78bfa; }
+.sig-cap  { background: rgba(45,212,191,0.1); color: #5eead4; }
+.sig-gap  { background: rgba(251,146,60,0.1); color: #fb923c; }
 .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -735,7 +766,7 @@ body {
         <span class="count">{{ stock_count }} 只</span>
     </div>
     <div class="tags">
-        <span class="tag tag-v4">★ 七组长周期条件</span>
+        <span class="tag tag-v4">★ 九组条件</span>
         <span class="tag tag-boll">BOLL 月24/周104</span>
         <span class="tag tag-macd">MACD 月或周</span>
         <span class="tag tag-obv">OBV 月/周</span>
@@ -743,14 +774,17 @@ body {
         <span class="tag tag-amo">量能 月48/周208</span>
         <span class="tag tag-kdj">KDJ 月24</span>
         <span class="tag tag-v4">月收盘价 &gt; MA5</span>
+        <span class="tag tag-cap">流通市值 20～200亿</span>
+        <span class="tag tag-gap">两年月/周向上跳空</span>
     </div>
 </div>
 
 <div class="strategy-desc">
     <strong>策略逻辑（V6）：</strong>
-    七组条件全部通过：近两年月线鸭口 + 周线鸭口或三轨向上；月线或零轴上周线 MACD
+    九组条件全部通过：近两年月线鸭口 + 周线鸭口或三轨向上；月线或零轴上周线 MACD
     金叉后保持；月周 OBV 均线上方；周 DMA；四年内月量≥3倍且周量≥2倍；
-    两年内月 KDJ 先后上穿并形成 J&gt;K&gt;D；两年内月收盘价曾高于 MA5。
+    两年内月 KDJ 先后上穿并形成 J&gt;K&gt;D；两年内月收盘价曾高于 MA5；
+    流通市值20～200亿元；两年内月线或周线至少一次向上跳空≥0.02元。
 </div>
 
 <div class="disclaimer" id="data-status">
@@ -815,6 +849,8 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 {{ s.detail.AMO }}</span>
         <span class="sig sig-kdj">KDJ {{ s.detail.KDJ }}</span>
         <span class="sig sig-v4">MA5 {{ s.detail.MA5 }}</span>
+        <span class="sig sig-cap">流通市值 {{ s.detail.CAP }}</span>
+        <span class="sig sig-gap">跳空 {{ s.detail.GAP }}</span>
     </div>
     {% endif %}
 </div>
@@ -828,7 +864,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
 </div>
 
 <div class="footer">
-    <p>长周期鸭口选股 V6 · 七组月/周线条件 · 数据来源：腾讯财经</p>
+    <p>长周期鸭口选股 V6 · 九组筛选条件 · 数据来源：腾讯财经 / Tushare</p>
     <p style="margin-top:4px;">每个交易日收盘后自动更新</p>
 </div>
 </body>
@@ -863,6 +899,8 @@ def save_data_json(selected_stocks, output_path):
             'AMO': '成交量（非成交额）：月48期内≥前月3倍且周208期内≥前周2倍',
             'KDJ': '月24期内J/K与K/D允许先后上穿，最终形成J>K>D',
             'MA5': '月24期内至少一期收盘价>月MA5',
+            'CAP': '交易日流通市值20亿～200亿元（含边界）',
+            'GAP': '近24个月或104周内至少一次本期最低价≥前一期最高价+0.02元',
         },
         'adjustment': 'qfq',
         'data_source': SOURCE,

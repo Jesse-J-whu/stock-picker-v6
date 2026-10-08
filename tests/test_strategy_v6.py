@@ -82,14 +82,37 @@ class V6StrategyTests(unittest.TestCase):
         with patch.object(strategy, 'calc_kdj_values', return_value=(k, d, j)):
             self.assertFalse(strategy.calc_kdj_sequential(data, 4))
 
-    def test_all_seven_groups_are_required(self):
+    def test_market_cap_boundaries_are_inclusive(self):
+        self.assertTrue(strategy.calc_circulating_market_cap(200_000))
+        self.assertTrue(strategy.calc_circulating_market_cap(2_000_000))
+        self.assertFalse(strategy.calc_circulating_market_cap(199_999.99))
+        self.assertFalse(strategy.calc_circulating_market_cap(2_000_000.01))
+
+    def test_gap_is_at_least_two_cents_inside_window(self):
+        data = frame(26)
+        data['high'] = 10.00
+        data['low'] = 9.00
+        data.loc[25, 'low'] = 10.02
+        self.assertTrue(strategy.calc_gap_up(data, 24))
+        data.loc[25, 'low'] = 10.019
+        self.assertFalse(strategy.calc_gap_up(data, 24))
+
+    def test_gap_outside_window_does_not_count(self):
+        data = frame(30)
+        data['high'] = 10.00
+        data['low'] = 9.00
+        data.loc[5, 'low'] = 10.02
+        self.assertFalse(strategy.calc_gap_up(data, 24))
+
+    def test_all_nine_groups_are_required(self):
         conditions = {'BOLL': True, 'MACD': True, 'OBV': True, 'DMA': True,
-                      'AMO': True, 'KDJ': True, 'MA5': True, '_parts': {}}
+                      'AMO': True, 'KDJ': True, 'MA5': True, 'CAP': True,
+                      'GAP': True, '_parts': {}}
         with patch.object(strategy, 'evaluate_conditions', return_value=conditions):
-            self.assertTrue(strategy.apply_strategy(frame(60), frame(209)))
-        conditions['OBV'] = False
+            self.assertTrue(strategy.apply_strategy(frame(60), frame(209), 200_000))
+        conditions['GAP'] = False
         with patch.object(strategy, 'evaluate_conditions', return_value=conditions):
-            self.assertFalse(strategy.apply_strategy(frame(60), frame(209)))
+            self.assertFalse(strategy.apply_strategy(frame(60), frame(209), 200_000))
 
 
 if __name__ == '__main__':
