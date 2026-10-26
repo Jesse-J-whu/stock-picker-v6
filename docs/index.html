@@ -192,8 +192,8 @@ body {
 <div class="header">
     <h1>长周期鸭口选股 V6</h1>
     <div class="meta">
-        <span>2026年10月23日 16:14 北京时间更新</span>
-        <span class="count">21 只</span>
+        <span>2026年10月26日 16:13 北京时间更新</span>
+        <span class="count">13 只</span>
     </div>
     <div class="tags">
         <span class="tag tag-v4">★ 十组条件</span>
@@ -220,11 +220,11 @@ body {
 </div>
 
 <div class="disclaimer" id="data-status">
-    行情日期 2026-10-23 · 前复权 · 覆盖 5025/5025 · 已计算 4822 · 历史不足 203 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期<br>价格：前复权；放量指标：成交量（非成交额）。
+    行情日期 2026-10-26 · 前复权 · 覆盖 5023/5023 · 已计算 4820 · 历史不足 203 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期<br>价格：前复权；放量指标：成交量（非成交额）。
     <br><span id="freshness-warning"></span>
 </div>
 <script>
-const dataDay = "行情日期 2026-10-23 · 前复权 · 覆盖 5025/5025 · 已计算 4822 · 历史不足 203 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期".match(/\d{4}-\d{2}-\d{2}/);
+const dataDay = "行情日期 2026-10-26 · 前复权 · 覆盖 5023/5023 · 已计算 4820 · 历史不足 203 · 沪深当日交易股票（不含北交所/停牌/ST） · 周/月含未结束周期".match(/\d{4}-\d{2}-\d{2}/);
 if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400000) {
   document.getElementById("freshness-warning").textContent =
     "提示：行情日期距今超过4天，可能为休市或任务未更新，请核对运行状态。";
@@ -240,114 +240,16 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
 <div class="stock-card">
     <div class="card-top">
         <div>
-            <div class="stock-name">超声电子</div>
-            <div class="stock-code">000823</div>
-        </div>
-        <div class="stock-price">
-            
-            <div class="price-value down">
-                20.64
-            </div>
-            <div class="price-change down">
-                -6.31%
-            </div>
-            
-        </div>
-    </div>
-    
-    <div class="card-bottom">
-        <div class="metric">
-            <div class="metric-label">开盘</div>
-            <div class="metric-value">21.22</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最高</div>
-            <div class="metric-value">21.69</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最低</div>
-            <div class="metric-value">19.83</div>
-        </div>
-    </div>
-    
-    
-    <div class="signal-row">
-        <span class="sig sig-boll">BOLL 月✓ 周✓</span>
-        <span class="sig sig-macd">MACD 月✗ 或 周✓</span>
-        <span class="sig sig-obv">OBV 月✓ 周✓</span>
-        <span class="sig sig-dma">DMA 周✓</span>
-        <span class="sig sig-amo">成交量 ✓</span>
-        <span class="sig sig-kdj">KDJ 月✓</span>
-        <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 122.79亿 ✓</span>
-        <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
-        <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
-    </div>
-    
-</div>
-
-<div class="stock-card">
-    <div class="card-top">
-        <div>
-            <div class="stock-name">闽东电力</div>
-            <div class="stock-code">000993</div>
-        </div>
-        <div class="stock-price">
-            
-            <div class="price-value down">
-                12.71
-            </div>
-            <div class="price-change down">
-                -7.76%
-            </div>
-            
-        </div>
-    </div>
-    
-    <div class="card-bottom">
-        <div class="metric">
-            <div class="metric-label">开盘</div>
-            <div class="metric-value">12.44</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最高</div>
-            <div class="metric-value">13.09</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最低</div>
-            <div class="metric-value">12.40</div>
-        </div>
-    </div>
-    
-    
-    <div class="signal-row">
-        <span class="sig sig-boll">BOLL 月✓ 周✓</span>
-        <span class="sig sig-macd">MACD 月✓ 或 周✗</span>
-        <span class="sig sig-obv">OBV 月✓ 周✓</span>
-        <span class="sig sig-dma">DMA 周✓</span>
-        <span class="sig sig-amo">成交量 ✓</span>
-        <span class="sig sig-kdj">KDJ 月✓</span>
-        <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 58.21亿 ✓</span>
-        <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
-        <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
-    </div>
-    
-</div>
-
-<div class="stock-card">
-    <div class="card-top">
-        <div>
-            <div class="stock-name">华瓷股份</div>
-            <div class="stock-code">001216</div>
+            <div class="stock-name">我爱我家</div>
+            <div class="stock-code">000560</div>
         </div>
         <div class="stock-price">
             
             <div class="price-value up">
-                28.12
+                3.04
             </div>
             <div class="price-change up">
-                +10.02%
+                +6.67%
             </div>
             
         </div>
@@ -356,15 +258,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">24.70</div>
+            <div class="metric-value">2.86</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">28.12</div>
+            <div class="metric-value">3.13</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">23.37</div>
+            <div class="metric-value">2.79</div>
         </div>
     </div>
     
@@ -377,7 +279,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 69.41亿 ✓</span>
+        <span class="sig sig-cap">流通市值 71.22亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -392,11 +294,11 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         </div>
         <div class="stock-price">
             
-            <div class="price-value up">
-                12.33
+            <div class="price-value down">
+                11.90
             </div>
-            <div class="price-change up">
-                +9.99%
+            <div class="price-change down">
+                -3.49%
             </div>
             
         </div>
@@ -405,15 +307,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">11.14</div>
+            <div class="metric-value">11.10</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">12.33</div>
+            <div class="metric-value">11.96</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">10.09</div>
+            <div class="metric-value">11.10</div>
         </div>
     </div>
     
@@ -426,57 +328,8 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 69.85亿 ✓</span>
+        <span class="sig sig-cap">流通市值 67.41亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
-        <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
-    </div>
-    
-</div>
-
-<div class="stock-card">
-    <div class="card-top">
-        <div>
-            <div class="stock-name">高争民爆</div>
-            <div class="stock-code">002827</div>
-        </div>
-        <div class="stock-price">
-            
-            <div class="price-value up">
-                51.80
-            </div>
-            <div class="price-change up">
-                +6.41%
-            </div>
-            
-        </div>
-    </div>
-    
-    <div class="card-bottom">
-        <div class="metric">
-            <div class="metric-label">开盘</div>
-            <div class="metric-value">47.82</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最高</div>
-            <div class="metric-value">52.10</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最低</div>
-            <div class="metric-value">47.50</div>
-        </div>
-    </div>
-    
-    
-    <div class="signal-row">
-        <span class="sig sig-boll">BOLL 月✓ 周✓</span>
-        <span class="sig sig-macd">MACD 月✓ 或 周✗</span>
-        <span class="sig sig-obv">OBV 月✓ 周✓</span>
-        <span class="sig sig-dma">DMA 周✓</span>
-        <span class="sig sig-amo">成交量 ✓</span>
-        <span class="sig sig-kdj">KDJ 月✓</span>
-        <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 142.97亿 ✓</span>
-        <span class="sig sig-gap">跳空 月✓ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
     
@@ -491,10 +344,10 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <div class="stock-price">
             
             <div class="price-value up">
-                14.63
+                14.77
             </div>
             <div class="price-change up">
-                +6.09%
+                +0.96%
             </div>
             
         </div>
@@ -503,15 +356,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">13.77</div>
+            <div class="metric-value">14.55</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">14.75</div>
+            <div class="metric-value">15.70</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">13.40</div>
+            <div class="metric-value">14.50</div>
         </div>
     </div>
     
@@ -524,7 +377,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 21.03亿 ✓</span>
+        <span class="sig sig-cap">流通市值 21.23亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -540,10 +393,10 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <div class="stock-price">
             
             <div class="price-value up">
-                11.71
+                11.85
             </div>
             <div class="price-change up">
-                +19.98%
+                +1.20%
             </div>
             
         </div>
@@ -552,15 +405,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">9.60</div>
+            <div class="metric-value">11.48</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">11.71</div>
+            <div class="metric-value">12.65</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">9.59</div>
+            <div class="metric-value">11.12</div>
         </div>
     </div>
     
@@ -573,7 +426,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 95.92亿 ✓</span>
+        <span class="sig sig-cap">流通市值 97.07亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -589,10 +442,10 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <div class="stock-price">
             
             <div class="price-value down">
-                58.20
+                53.00
             </div>
             <div class="price-change down">
-                -3.55%
+                -8.93%
             </div>
             
         </div>
@@ -601,15 +454,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">60.60</div>
+            <div class="metric-value">55.90</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">63.98</div>
+            <div class="metric-value">56.34</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">54.30</div>
+            <div class="metric-value">52.61</div>
         </div>
     </div>
     
@@ -622,7 +475,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 55.14亿 ✓</span>
+        <span class="sig sig-cap">流通市值 50.21亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -637,11 +490,11 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         </div>
         <div class="stock-price">
             
-            <div class="price-value up">
-                40.78
+            <div class="price-value down">
+                36.20
             </div>
-            <div class="price-change up">
-                +8.17%
+            <div class="price-change down">
+                -11.23%
             </div>
             
         </div>
@@ -650,15 +503,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">40.42</div>
+            <div class="metric-value">37.83</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">41.24</div>
+            <div class="metric-value">38.69</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">38.19</div>
+            <div class="metric-value">34.68</div>
         </div>
     </div>
     
@@ -671,8 +524,8 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 74.16亿 ✓</span>
-        <span class="sig sig-gap">跳空 月✓ 或 周✓</span>
+        <span class="sig sig-cap">流通市值 65.83亿 ✓</span>
+        <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
     
@@ -687,10 +540,10 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <div class="stock-price">
             
             <div class="price-value down">
-                11.46
+                11.16
             </div>
             <div class="price-change down">
-                -6.45%
+                -2.62%
             </div>
             
         </div>
@@ -699,15 +552,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">11.60</div>
+            <div class="metric-value">11.17</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">11.87</div>
+            <div class="metric-value">11.46</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">11.03</div>
+            <div class="metric-value">10.61</div>
         </div>
     </div>
     
@@ -720,105 +573,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 73.55亿 ✓</span>
-        <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
-        <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
-    </div>
-    
-</div>
-
-<div class="stock-card">
-    <div class="card-top">
-        <div>
-            <div class="stock-name">返利科技</div>
-            <div class="stock-code">600228</div>
-        </div>
-        <div class="stock-price">
-            
-            <div class="price-value up">
-                9.39
-            </div>
-            <div class="price-change up">
-                +1.40%
-            </div>
-            
-        </div>
-    </div>
-    
-    <div class="card-bottom">
-        <div class="metric">
-            <div class="metric-label">开盘</div>
-            <div class="metric-value">9.10</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最高</div>
-            <div class="metric-value">9.45</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最低</div>
-            <div class="metric-value">8.66</div>
-        </div>
-    </div>
-    
-    
-    <div class="signal-row">
-        <span class="sig sig-boll">BOLL 月✓ 周✓</span>
-        <span class="sig sig-macd">MACD 月✗ 或 周✓</span>
-        <span class="sig sig-obv">OBV 月✓ 周✓</span>
-        <span class="sig sig-dma">DMA 周✓</span>
-        <span class="sig sig-amo">成交量 ✓</span>
-        <span class="sig sig-kdj">KDJ 月✓</span>
-        <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 39.07亿 ✓</span>
-        <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
-        <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
-    </div>
-    
-</div>
-
-<div class="stock-card">
-    <div class="card-top">
-        <div>
-            <div class="stock-name">时代万恒</div>
-            <div class="stock-code">600241</div>
-        </div>
-        <div class="stock-price">
-            
-            <div class="price-value down">
-                10.15
-            </div>
-            <div class="price-change down">
-                -7.98%
-            </div>
-            
-        </div>
-    </div>
-    
-    <div class="card-bottom">
-        <div class="metric">
-            <div class="metric-label">开盘</div>
-            <div class="metric-value">10.01</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最高</div>
-            <div class="metric-value">10.90</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最低</div>
-            <div class="metric-value">9.93</div>
-        </div>
-    </div>
-    
-    
-    <div class="signal-row">
-        <span class="sig sig-boll">BOLL 月✓ 周✓</span>
-        <span class="sig sig-macd">MACD 月✓ 或 周✗</span>
-        <span class="sig sig-obv">OBV 月✓ 周✓</span>
-        <span class="sig sig-dma">DMA 周✓</span>
-        <span class="sig sig-amo">成交量 ✓</span>
-        <span class="sig sig-kdj">KDJ 月✓</span>
-        <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 29.87亿 ✓</span>
+        <span class="sig sig-cap">流通市值 71.62亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -834,10 +589,10 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <div class="stock-price">
             
             <div class="price-value down">
-                10.89
+                10.51
             </div>
             <div class="price-change down">
-                -2.24%
+                -3.49%
             </div>
             
         </div>
@@ -846,15 +601,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">11.25</div>
+            <div class="metric-value">10.99</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">11.26</div>
+            <div class="metric-value">11.00</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">10.21</div>
+            <div class="metric-value">10.41</div>
         </div>
     </div>
     
@@ -867,56 +622,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 31.86亿 ✓</span>
-        <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
-        <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
-    </div>
-    
-</div>
-
-<div class="stock-card">
-    <div class="card-top">
-        <div>
-            <div class="stock-name">福建水泥</div>
-            <div class="stock-code">600802</div>
-        </div>
-        <div class="stock-price">
-            
-            <div class="price-value up">
-                7.20
-            </div>
-            <div class="price-change up">
-                +2.56%
-            </div>
-            
-        </div>
-    </div>
-    
-    <div class="card-bottom">
-        <div class="metric">
-            <div class="metric-label">开盘</div>
-            <div class="metric-value">6.88</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最高</div>
-            <div class="metric-value">7.38</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最低</div>
-            <div class="metric-value">6.62</div>
-        </div>
-    </div>
-    
-    
-    <div class="signal-row">
-        <span class="sig sig-boll">BOLL 月✓ 周✓</span>
-        <span class="sig sig-macd">MACD 月✓ 或 周✗</span>
-        <span class="sig sig-obv">OBV 月✓ 周✓</span>
-        <span class="sig sig-dma">DMA 周✓</span>
-        <span class="sig sig-amo">成交量 ✓</span>
-        <span class="sig sig-kdj">KDJ 月✓</span>
-        <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 32.99亿 ✓</span>
+        <span class="sig sig-cap">流通市值 30.75亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -932,10 +638,10 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <div class="stock-price">
             
             <div class="price-value up">
-                15.18
+                15.51
             </div>
             <div class="price-change up">
-                +4.33%
+                +2.17%
             </div>
             
         </div>
@@ -944,15 +650,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">14.00</div>
+            <div class="metric-value">14.70</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">15.28</div>
+            <div class="metric-value">15.76</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">13.52</div>
+            <div class="metric-value">14.40</div>
         </div>
     </div>
     
@@ -965,7 +671,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 158.61亿 ✓</span>
+        <span class="sig sig-cap">流通市值 162.06亿 ✓</span>
         <span class="sig sig-gap">跳空 月✓ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -981,10 +687,10 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <div class="stock-price">
             
             <div class="price-value up">
-                15.96
+                17.25
             </div>
             <div class="price-change up">
-                +9.99%
+                +8.08%
             </div>
             
         </div>
@@ -993,15 +699,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">13.93</div>
+            <div class="metric-value">17.56</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">15.96</div>
+            <div class="metric-value">17.56</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">13.23</div>
+            <div class="metric-value">17.01</div>
         </div>
     </div>
     
@@ -1014,7 +720,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 54.54亿 ✓</span>
+        <span class="sig sig-cap">流通市值 58.95亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -1029,11 +735,11 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         </div>
         <div class="stock-price">
             
-            <div class="price-value up">
-                26.61
+            <div class="price-value down">
+                26.15
             </div>
-            <div class="price-change up">
-                +2.31%
+            <div class="price-change down">
+                -1.73%
             </div>
             
         </div>
@@ -1042,15 +748,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">25.22</div>
+            <div class="metric-value">26.02</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">27.50</div>
+            <div class="metric-value">27.05</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">24.37</div>
+            <div class="metric-value">24.47</div>
         </div>
     </div>
     
@@ -1063,7 +769,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 116.79亿 ✓</span>
+        <span class="sig sig-cap">流通市值 114.77亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -1079,10 +785,10 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <div class="stock-price">
             
             <div class="price-value up">
-                7.95
+                8.10
             </div>
             <div class="price-change up">
-                +1.92%
+                +1.89%
             </div>
             
         </div>
@@ -1091,15 +797,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">7.50</div>
+            <div class="metric-value">7.83</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">8.08</div>
+            <div class="metric-value">8.44</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">7.11</div>
+            <div class="metric-value">7.83</div>
         </div>
     </div>
     
@@ -1112,56 +818,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 53.81亿 ✓</span>
-        <span class="sig sig-gap">跳空 月✓ 或 周✓</span>
-        <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
-    </div>
-    
-</div>
-
-<div class="stock-card">
-    <div class="card-top">
-        <div>
-            <div class="stock-name">龙版传媒</div>
-            <div class="stock-code">605577</div>
-        </div>
-        <div class="stock-price">
-            
-            <div class="price-value down">
-                14.04
-            </div>
-            <div class="price-change down">
-                -6.59%
-            </div>
-            
-        </div>
-    </div>
-    
-    <div class="card-bottom">
-        <div class="metric">
-            <div class="metric-label">开盘</div>
-            <div class="metric-value">14.57</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最高</div>
-            <div class="metric-value">14.96</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最低</div>
-            <div class="metric-value">13.53</div>
-        </div>
-    </div>
-    
-    
-    <div class="signal-row">
-        <span class="sig sig-boll">BOLL 月✓ 周✓</span>
-        <span class="sig sig-macd">MACD 月✓ 或 周✗</span>
-        <span class="sig sig-obv">OBV 月✓ 周✓</span>
-        <span class="sig sig-dma">DMA 周✓</span>
-        <span class="sig sig-amo">成交量 ✓</span>
-        <span class="sig sig-kdj">KDJ 月✓</span>
-        <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 62.40亿 ✓</span>
+        <span class="sig sig-cap">流通市值 54.82亿 ✓</span>
         <span class="sig sig-gap">跳空 月✓ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
@@ -1176,11 +833,11 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         </div>
         <div class="stock-price">
             
-            <div class="price-value up">
-                37.00
+            <div class="price-value down">
+                36.36
             </div>
-            <div class="price-change up">
-                +0.14%
+            <div class="price-change down">
+                -1.73%
             </div>
             
         </div>
@@ -1189,15 +846,15 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
     <div class="card-bottom">
         <div class="metric">
             <div class="metric-label">开盘</div>
-            <div class="metric-value">36.22</div>
+            <div class="metric-value">38.10</div>
         </div>
         <div class="metric">
             <div class="metric-label">最高</div>
-            <div class="metric-value">39.34</div>
+            <div class="metric-value">40.07</div>
         </div>
         <div class="metric">
             <div class="metric-label">最低</div>
-            <div class="metric-value">33.56</div>
+            <div class="metric-value">35.73</div>
         </div>
     </div>
     
@@ -1210,56 +867,7 @@ if (dataDay && Date.now() - Date.parse(dataDay[0] + "T15:00:00+08:00") > 4*86400
         <span class="sig sig-amo">成交量 ✓</span>
         <span class="sig sig-kdj">KDJ 月✓</span>
         <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 29.63亿 ✓</span>
-        <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
-        <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
-    </div>
-    
-</div>
-
-<div class="stock-card">
-    <div class="card-top">
-        <div>
-            <div class="stock-name">成都先导</div>
-            <div class="stock-code">688222</div>
-        </div>
-        <div class="stock-price">
-            
-            <div class="price-value up">
-                37.08
-            </div>
-            <div class="price-change up">
-                +5.34%
-            </div>
-            
-        </div>
-    </div>
-    
-    <div class="card-bottom">
-        <div class="metric">
-            <div class="metric-label">开盘</div>
-            <div class="metric-value">34.50</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最高</div>
-            <div class="metric-value">37.60</div>
-        </div>
-        <div class="metric">
-            <div class="metric-label">最低</div>
-            <div class="metric-value">33.35</div>
-        </div>
-    </div>
-    
-    
-    <div class="signal-row">
-        <span class="sig sig-boll">BOLL 月✓ 周✓</span>
-        <span class="sig sig-macd">MACD 月✗ 或 周✓</span>
-        <span class="sig sig-obv">OBV 月✓ 周✓</span>
-        <span class="sig sig-dma">DMA 周✓</span>
-        <span class="sig sig-amo">成交量 ✓</span>
-        <span class="sig sig-kdj">KDJ 月✓</span>
-        <span class="sig sig-v4">MA5 月✓</span>
-        <span class="sig sig-cap">流通市值 148.75亿 ✓</span>
+        <span class="sig sig-cap">流通市值 29.12亿 ✓</span>
         <span class="sig sig-gap">跳空 月✗ 或 周✓</span>
         <span class="sig sig-boll">鸭口后周收盘&gt;中轨 周✓</span>
     </div>
